@@ -85,7 +85,7 @@ class LedgergSquadSmokeTests(unittest.TestCase):
         self.assertIn('class="warp-preview-link" href="#/warp"', HTML)
 
     def test_all_release_assets_are_listed_not_only_hardcoded_archives(self):
-        self.assertIn('for asset in release.get("assets", [])', MONITOR)
+        self.assertIn('for item in release.get("assets", [])', MONITOR)
         self.assertIn('browser_download_url', MONITOR)
         self.assertIn('release.assets.map(a=>normaliseAsset', HTML)
 
@@ -123,7 +123,7 @@ class LedgergSquadSmokeTests(unittest.TestCase):
         self.assertIn("docs.json", WORKFLOW)
         self.assertIn("renderMarkdown", HTML)
         self.assertIn("documentationMarkup(t)", HTML)
-        self.assertIn("docs.projects", HTML)
+        self.assertIn("docsData.projects", HTML)
 
     def test_external_links_open_safely(self):
         for anchor in re.findall(r'<a[^>]+target="_blank"[^>]*>', HTML):
