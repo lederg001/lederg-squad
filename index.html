@@ -100,14 +100,14 @@ const bytes=n=>{if(!n)return'';const units=['B','KB','MB','GB'];let i=0,x=n;whil
 const primaryAsset=t=>t.assets.find(a=>a.name===t.primary)||t.assets[0];
 function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2400);}
 function go(path){location.hash=path;nav.classList.remove('open');}
-function previewMarkup(t){return '<div class="preview" data-fallback="'+esc(t.fallback)+'"><img src="'+esc(t.preview)+'" alt="'+esc(t.name)+' — официальный preview из GitHub" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove();this.parentElement.classList.add(\\'fallback\\')"><span class="preview-label"><i></i> OFFICIAL GITHUB SOURCE</span><span class="preview-version" data-version="'+esc(t.id)+'">'+esc(t.version)+'</span></div>';}
+function previewMarkup(t){return '<div class="preview" data-fallback="'+esc(t.fallback)+'"><img src="'+esc(t.preview)+'" alt="'+esc(t.name)+' — официальный preview из GitHub" loading="lazy" referrerpolicy="no-referrer"><span class="preview-label"><i></i> OFFICIAL GITHUB SOURCE</span><span class="preview-version" data-version="'+esc(t.id)+'">'+esc(t.version)+'</span></div>';}
 function cardMarkup(t){
  const p=primaryAsset(t);const btnLabel=t.id==='zapret'?'ZIP DOWNLOAD':t.id==='byebye'?'UNIVERSAL APK':t.id==='tgproxy'?'WINDOWS EXE':'UNIVERSAL APK';
  return '<article class="tool-card"><div class="card-preview" role="img" aria-label="'+esc(t.name)+'">'+previewMarkup(t)+'</div><div class="card-body"><div class="card-meta">'+esc(t.category)+' / '+esc(t.author)+'</div><div class="card-title-row"><h3>'+esc(t.name)+'</h3><span class="platform-tag">'+esc(t.platform)+'</span></div><p>'+esc(t.summary)+'</p><div class="pills">'+t.tags.map(x=>'<span class="pill">'+esc(x)+'</span>').join('')+'</div></div><div class="card-footer"><div class="author"><b>OFFICIAL AUTHOR · '+esc(t.author)+'</b><span data-release-date="'+esc(t.id)+'">Release '+esc(t.published)+'</span></div><div class="card-buttons">'+(p?'<a class="download" href="'+esc(p.url)+'" target="_blank" rel="noopener noreferrer" download>'+btnLabel+' ↓</a>':'')+'<button data-detail="'+esc(t.id)+'">ФАЙЛЫ / INFO</button><a href="'+esc(t.release)+'" target="_blank" rel="noopener noreferrer">GITHUB ↗</a></div></div></article>';
 }
 function homeView(){
  const q=state.query.toLowerCase();
- const list=tools.filter(t=>(state.filter==='ВСЕ'||t.tags.includes(state.filter)||t.platform.includes(state.filter))&&(t.name+' '+t.category+' '+t.author+' '+t.summary+' '+t.tags.join(' ')).toLowerCase().includes(q));
+ const list=tools.filter(t=>(state.filter==='ВСЕ'||t.tags.includes(state.filter)||t.platform.includes(state.filter)||t.category.includes(state.filter))&&(t.name+' '+t.category+' '+t.author+' '+t.summary+' '+t.tags.join(' ')).toLowerCase().includes(q));
  app.innerHTML='<section class="hero"><div><span class="eyebrow"><i class="pulse"></i> OFFICIAL SOURCE INDEX</span><h1>NO FAKE.<span>ONLY ORIGINAL.</span></h1><p class="hero-copy">Единый каталог DPI-инструментов, запреток и Telegram-прокси. На LEDERG SQUAD собраны официальные страницы разработчиков, оригинальные релизы и прямые загрузки — без сторонних зеркал, неизвестных сборок и перепаковок.</p><div class="hero-actions"><a class="btn-primary" href="#catalog">Открыть каталог ↓</a><a class="btn-secondary" href="#safety">Как не скачать стиллер</a></div></div><div class="hero-art"><div class="radar"><span class="ring-dot"></span><span class="ring-dot two"></span><div class="radar-center"><strong>LEDERG<span>.</span></strong><small>SQUAD / NETWORK TOOLS</small></div></div><div class="art-chip"><b>SOURCE FIRST</b><small>DIRECT FROM DEVELOPERS</small></div></div></section>'+
  '<div class="stats"><div class="stat"><strong>0<span>4</span></strong><small>Официальных проекта</small></div><div class="stat"><strong>0<span>5</span></strong><small>Основных групп загрузок</small></div><div class="stat"><strong>100<span>%</span></strong><small>Ссылки на первоисточники</small></div></div>'+
  '<section id="catalog"><div class="section-head"><div><div class="section-kicker">01 / OFFICIAL DOWNLOADS</div><h2>Каталог инструментов</h2></div><div class="section-note">Выбери программу → ознакомься с карточкой → скачай нужный файл с официального GitHub Releases автора.</div></div>'+
@@ -120,6 +120,7 @@ function homeView(){
  bindHome();
 }
 function bindHome(){
+ app.querySelectorAll('.preview img').forEach(img=>img.addEventListener('error',()=>{img.remove();img.parentElement.classList.add('fallback');}));
  app.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{state.filter=b.dataset.filter;homeView();}));
  app.querySelectorAll('[data-detail]').forEach(b=>b.addEventListener('click',()=>go('#/tool/'+b.dataset.detail)));
  const input=$('#searchInput');
@@ -134,7 +135,8 @@ function warpView(){
  app.innerHTML='<section class="detail"><div class="backline"><a href="#/">LEDERG SQUAD</a> / CLOUDFLARE / WINDOWS</div><div class="detail-hero"><div><div class="section-kicker">05 / CLOUDFLARE · OFFICIAL CLIENT</div><h1>CLOUDFLARE WARP</h1><p>Официальный клиент Cloudflare для Windows. Доступны два основных режима: WARP — маршрутизация трафика устройства через сеть Cloudflare; 1.1.1.1 — шифрование DNS-запросов к резолверу 1.1.1.1.</p></div><div class="detail-stats"><span>Источник загрузки</span><b>Cloudflare</b><span style="margin-top:8px">Платформа</span><b>Windows</b><a href="'+WARP_URL+'" target="_blank" rel="noopener noreferrer">ОФИЦИАЛЬНАЯ ИНСТРУКЦИЯ ↗</a></div></div><div class="detail-columns"><div><article class="panel"><h2>Что это</h2><p>WARP — сетевой клиент Cloudflare. Он устанавливается на Windows и отображается как приложение Cloudflare WARP. При выборе WARP-режима трафик устройства направляется через сеть Cloudflare; в режиме 1.1.1.1 приложение ограничивается DNS-трафиком.</p><h3>УСТАНОВКА</h3><ol><li>Открой официальную инструкцию Cloudflare по кнопке ниже.</li><li>Перейди к Download Cloudflare WARP for Windows.</li><li>Скачай установщик с Cloudflare и запусти его.</li><li>Заверши установку и выбери режим в приложении.</li></ol><h3>СИСТЕМНЫЕ ТРЕБОВАНИЯ</h3><p>Проверяй актуальные поддерживаемые версии Windows, процессор и требования к .NET Framework на официальной странице перед установкой.</p></article><article class="panel"><h2>Оригинальная документация</h2><p>Здесь не размещаются зеркала или сторонние установщики. Cloudflare публикует инструкцию и кнопку загрузки на собственном домене.</p><div class="file-list"><div class="file-row"><div><strong>Cloudflare WARP for Windows</strong><small>Официальная страница установки и скачивания</small></div><a href="'+WARP_URL+'" target="_blank" rel="noopener noreferrer">ОТКРЫТЬ ↗</a></div></div></article></div><aside class="detail-aside"><article class="panel"><h2>Официальные ссылки</h2><a class="source-link" href="'+WARP_URL+'" target="_blank" rel="noopener noreferrer">Windows setup / download <span>↗</span></a><a class="source-link" href="https://developers.cloudflare.com/warp-client/" target="_blank" rel="noopener noreferrer">WARP documentation <span>↗</span></a><a class="source-link" href="https://developers.cloudflare.com/cloudflare-one/" target="_blank" rel="noopener noreferrer">Cloudflare One <span>↗</span></a><div class="official-note">Cloudflare WARP и Cloudflare One Client — разные варианты клиента. Для домашнего WARP используй ссылку из этой карточки; для Zero Trust смотри отдельную документацию Cloudflare.</div></article></aside></div></section>';
 }
 function render(){
- const parts=(location.hash||'#/').replace(/^#\\/?/,'').split('/').filter(Boolean);
+ if(location.hash==='#catalog'){homeView();$('#catalog')?.scrollIntoView({behavior:'smooth'});return;}
+ const parts=(location.hash||'#/').replace(/^#\/?/,'').split('/').filter(Boolean);
  if(!parts.length||parts[0]==='catalog')homeView();
  else if(parts[0]==='warp')warpView();
  else if(parts[0]==='tool'){const t=tools.find(x=>x.id===parts[1]);t?detailView(t):homeView();}
@@ -160,8 +162,10 @@ async function refreshReleases(){
    if(mapped.length){t.assets=mapped;t.primary=mapped.find(a=>a.key==='zip'||a.key==='win64'||a.key==='universal')?.name||mapped[0].name;}
   }catch(e){/* keep verified fallback release links when GitHub API is temporarily unavailable */ }
  }));
+ const y=window.scrollY;
  if((location.hash||'#/')==='#/'||(location.hash||'#/')==='#/catalog')homeView();
  const current=tools.find(t=>location.hash==='#/tool/'+t.id);if(current)detailView(current);
+ window.scrollTo({top:y,behavior:'instant'});
 }
 $('#mobileMenu').addEventListener('click',()=>nav.classList.toggle('open'));
 nav.addEventListener('click',e=>{if(e.target.closest('a'))nav.classList.remove('open');});
