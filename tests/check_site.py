@@ -128,5 +128,23 @@ class LedgergSquadSmokeTests(unittest.TestCase):
             self.assertIn('rel="noopener noreferrer"', anchor)
 
 
+    def test_tool_title_opens_the_internal_tool_page(self):
+        self.assertIn('class="tool-title-link" href="#/tool/', HTML)
+        self.assertIn('preview-image-link" href="#/tool/', HTML)
+
+    def test_preview_downloads_are_large_red_and_below_the_image(self):
+        self.assertIn('.preview-quick-actions{position:static', HTML)
+        self.assertIn('background:linear-gradient(135deg,#ff3445,#a90012)', HTML)
+        self.assertIn('min-height:46px', HTML)
+        image_link = HTML.index('class="preview-image-link"')
+        downloads = HTML.index('class="preview-quick-actions"')
+        self.assertLess(image_link, downloads)
+
+    def test_aggressive_card_refresh_is_present(self):
+        self.assertIn('tool-title-link', HTML)
+        self.assertIn('box-shadow:0 20px 52px', HTML)
+        self.assertIn('letter-spacing:.14em', HTML)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
