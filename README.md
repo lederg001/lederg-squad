@@ -14,7 +14,9 @@ The site exists so people do not confuse original releases with fake repacks and
 - kamenwwcpp/tg-ws-proxy-android — Telegram proxy for Android; all APK variants are listed.
 - Cloudflare WARP — consumer client install links for Windows, macOS, Linux, Android, and iOS.
 
-The project previews on the homepage are clickable and open internal LEDERG SQUAD detail pages. Those pages include program descriptions, installation information, release versions, and direct download buttons.
+The project previews on the homepage are clickable and open internal LEDERG SQUAD detail pages. Compact direct-download buttons are also displayed over each preview (for example, TG WS Proxy defaults specifically to `TgWsProxy_windows.exe`). Detail pages include program descriptions, installation information, release versions, and every attached direct-download asset.
+
+Maintainer README files are refreshed into `docs.json` and rendered inside each internal detail page. TG WS Proxy includes its main README plus dedicated Windows, Linux, and macOS installation guides. Markdown is rendered with HTML stripped/escaped; the original documentation is presented as read-only content.
 
 ## WARP platform destinations
 
@@ -29,10 +31,11 @@ Android and iOS use the official application stores. Linux uses a distribution-s
 ## Release monitoring
 
 - `scripts/update_releases.py` reads each project's GitHub `releases/latest` endpoint and writes **every attached release asset** and its direct download URL to `releases.json`.
+- The same monitor refreshes the projects' upstream README files and platform-specific documentation into `docs.json`.
 - `.github/workflows/release-monitor.yml` runs every two hours and can also be started manually.
 - The workflow retains the last known release entry when an upstream API is temporarily unavailable.
 - The website loads the committed manifest first and can refresh release data in the visitor's browser.
-- When the manifest changes, the workflow republishes the Pages website.
+- When either the release manifest or README documentation changes, the workflow republishes the Pages website.
 
 ## Safety
 
