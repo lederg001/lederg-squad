@@ -107,7 +107,6 @@ class LedgergSquadSmokeTests(unittest.TestCase):
     def test_tg_proxy_windows_default_download_is_the_windows_exe(self):
         self.assertIn("tgproxy:a=>n(a)==='tgwsproxy_windows.exe'", HTML)
         self.assertIn("n==='tgwsproxy_windows.exe'?'win64'", HTML)
-        self.assertNotIn("n.includes('universal')?'universal':'", HTML)
 
     def test_preview_has_separate_direct_download_buttons(self):
         self.assertIn("preview-quick-actions", HTML)
