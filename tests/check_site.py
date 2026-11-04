@@ -4,6 +4,9 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 HTML = (ROOT / "index.html").read_text(encoding="utf-8")
+MANIFEST = ROOT / "releases.json"
+MONITOR = (ROOT / "scripts" / "update_releases.py").read_text(encoding="utf-8")
+WORKFLOW = (ROOT / ".github" / "workflows" / "release-monitor.yml").read_text(encoding="utf-8")
 
 
 class LedgergSquadSmokeTests(unittest.TestCase):
@@ -65,6 +68,13 @@ class LedgergSquadSmokeTests(unittest.TestCase):
     def test_anti_fake_and_source_disclosure_are_present(self):
         self.assertIn("ТОЛЬКО ОФИЦИАЛЬНЫЕ ИСТОЧНИКИ", HTML)
         self.assertIn("не перепаковывает", HTML)
+
+    def test_release_monitor_manifest_and_schedule_exist(self):
+        self.assertTrue(MANIFEST.exists())
+        self.assertIn("api.github.com/repos/", MONITOR)
+        self.assertIn("schedule:", WORKFLOW)
+        self.assertIn("cron:", WORKFLOW)
+        self.assertIn("releases.json", HTML)
 
     def test_external_links_open_safely(self):
         for anchor in re.findall(r'<a[^>]+target="_blank"[^>]*>', HTML):
