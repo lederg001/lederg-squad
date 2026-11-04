@@ -41,6 +41,10 @@ jobs:
           for key in required:
               assert data["projects"][key]["assets"], key
               assert all(a["url"].startswith("https://") for a in data["projects"][key]["assets"])
+          docs=json.load(open("docs.json", encoding="utf-8"))
+          assert required.issubset(docs["projects"]), docs["projects"].keys()
+          for key in required:
+              assert docs["projects"][key]["sections"], key
           warp_platforms={item["os"] for item in data["warp"]["downloads"]}
           assert {"Windows","macOS","Linux","Android","iOS"}.issubset(warp_platforms)
           assert data["warp"]["download"].startswith("https://downloads.cloudflareclient.com/")
@@ -48,14 +52,14 @@ jobs:
       - name: Commit manifest when changed
         id: commit
         run: |
-          if git diff --quiet -- releases.json; then
+          if git diff --quiet -- releases.json docs.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "Release manifest is already current."
+            echo "Release and README manifests are already current."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add releases.json
+          git add releases.json docs.json
           git commit -m "chore: refresh official release manifest"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
