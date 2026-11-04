@@ -41,7 +41,9 @@ jobs:
           for key in required:
               assert data["projects"][key]["assets"], key
               assert all(a["url"].startswith("https://") for a in data["projects"][key]["assets"])
-          assert data["warp"]["download"].startswith("https://1111-releases.cloudflareclient.com/")
+          warp_platforms={item["os"] for item in data["warp"]["downloads"]}
+          assert {"Windows","macOS","Linux","Android","iOS"}.issubset(warp_platforms)
+          assert data["warp"]["download"].startswith("https://downloads.cloudflareclient.com/")
           PY
       - name: Commit manifest when changed
         id: commit
