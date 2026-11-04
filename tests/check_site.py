@@ -39,9 +39,28 @@ class LedgergSquadSmokeTests(unittest.TestCase):
         for variant in ("arm64", "universal", "arm32"):
             self.assertIn(variant, HTML)
 
-    def test_warp_links_to_the_official_windows_instructions(self):
-        self.assertIn("developers.cloudflare.com/warp-client/get-started/windows/", HTML)
-        self.assertIn("CLOUDFLARE WARP", HTML)
+    def test_warp_has_preview_and_direct_official_installer(self):
+        self.assertIn("https://1111-releases.cloudflareclient.com/win/latest", HTML)
+        self.assertIn("warp-preview", HTML)
+        self.assertIn("warp-visual", HTML)
+        self.assertIn("Cloudflare WARP", HTML)
+
+    def test_details_are_internal_and_no_external_source_navigation(self):
+        self.assertIn("Как работает", HTML)
+        self.assertIn("Документация", HTML)
+        self.assertNotIn("ОТКРЫТЬ ВСЕ РЕЛИЗЫ", HTML)
+        self.assertNotIn("GitHub repository", HTML)
+        self.assertNotIn("Cloudflare Docs", HTML)
+
+    def test_release_monitor_and_direct_download_links(self):
+        self.assertIn("releases.json", HTML)
+        self.assertIn("browser_download_url", HTML)
+        self.assertIn("download_url", HTML)
+
+    def test_footer_has_native_telegram_contact_and_discord(self):
+        self.assertIn("tg://resolve?domain=LEDERG_ru", HTML)
+        self.assertIn("@LEDERG_ru", HTML)
+        self.assertIn("https://discord.gg/kDRMWqKmZp", HTML)
 
     def test_anti_fake_and_source_disclosure_are_present(self):
         self.assertIn("ТОЛЬКО ОФИЦИАЛЬНЫЕ ИСТОЧНИКИ", HTML)
