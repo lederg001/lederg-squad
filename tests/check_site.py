@@ -81,6 +81,9 @@ class LedgergSquadSmokeTests(unittest.TestCase):
         self.assertIn('class="card-preview preview-open"', HTML)
         self.assertIn('href="#/tool/', HTML)
 
+    def test_warp_preview_opens_internal_information_page(self):
+        self.assertIn('class="warp-preview-link" href="#/warp"', HTML)
+
     def test_all_release_assets_are_listed_not_only_hardcoded_archives(self):
         self.assertIn('for asset in release.get("assets", [])', MONITOR)
         self.assertIn('browser_download_url', MONITOR)
