@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T14:31:50.699Z",
+  "generated_at": "2026-11-04T15:03:52.648684+00:00",
   "projects": {
     "zapret": {
       "repo": "Flowseal/zapret-discord-youtube",
@@ -64,20 +64,20 @@
           "size": 2748792
         },
         {
-          "name": "ByeByeDPI-v1.8.2-x86_64-release.apk",
-          "label": "Android · x64 · APK",
-          "os": "Android",
-          "key": "",
-          "url": "https://github.com/romanvht/ByeByeDPI/releases/download/v.1.8.2/ByeByeDPI-v1.8.2-x86_64-release.apk",
-          "size": 2778155
-        },
-        {
           "name": "ByeByeDPI-v1.8.2-x86-release.apk",
           "label": "Android · 32-bit / x86 · APK",
           "os": "Android",
           "key": "",
           "url": "https://github.com/romanvht/ByeByeDPI/releases/download/v.1.8.2/ByeByeDPI-v1.8.2-x86-release.apk",
           "size": 2774873
+        },
+        {
+          "name": "ByeByeDPI-v1.8.2-x86_64-release.apk",
+          "label": "Android · x64 · APK",
+          "os": "Android",
+          "key": "",
+          "url": "https://github.com/romanvht/ByeByeDPI/releases/download/v.1.8.2/ByeByeDPI-v1.8.2-x86_64-release.apk",
+          "size": 2778155
         }
       ]
     },
