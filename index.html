@@ -71,6 +71,63 @@ h2{font:800 clamp(24px,3.4vw,36px) Orbitron,sans-serif;letter-spacing:-.045em;ma
 @media(max-width:900px){.hero{grid-template-columns:1fr .72fr;gap:15px}.detail-columns{grid-template-columns:minmax(0,1fr) 250px}}
 @media(max-width:680px){.shell{width:calc(100% - 28px)}.nav{height:64px}.brand-mark{width:37px;height:37px}.nav-links{display:none;position:absolute;top:63px;left:14px;right:14px;padding:9px;background:#111114;border:1px solid #303038;border-radius:12px;flex-direction:column;align-items:stretch}.nav-links.open{display:flex}.nav-link{text-align:left}.nav-cta{display:none}.mobile-menu{display:block}.hero{grid-template-columns:1fr;padding:43px 0 30px}.hero-art{grid-row:1;min-height:220px}.radar{width:210px}.art-chip{right:1px;bottom:0}.hero-copy{font-size:11px}.stats{margin-bottom:45px}.stat{padding:13px 9px}.stat strong{font-size:16px}.stat small{font-size:7px;letter-spacing:.08em}.section-head{align-items:flex-start;flex-direction:column}.section-note{text-align:left}.toolbar{align-items:stretch}.search{width:100%}.grid{grid-template-columns:1fr}.preview{height:180px}.tool-card p{min-height:0}.warp-panel{grid-template-columns:1fr}.warp-content{padding:22px}.warp-visual{height:120px}.warp-visual b{font-size:36px}.detail{padding-top:30px}.detail-hero{grid-template-columns:1fr}.detail-stats{display:none}.detail-columns{grid-template-columns:1fr}.detail-aside{order:-1}.detail-aside .panel{position:static}.safety{grid-template-columns:1fr}.footer{flex-direction:column;align-items:flex-start;line-height:1.8}.footer-main{align-items:flex-start;flex-direction:column}.footer-contact{align-items:flex-start}.card-footer{align-items:flex-start;flex-direction:column}.card-buttons{justify-content:flex-start}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* LEDERG SQUAD // HIGH-IMPACT RED EDITION */
+:root{--bg:#050506;--panel:#0d0d11;--panel2:#15151b;--line:#34343d;--red:#ff263b;--red2:#97000f;--soft:rgba(255,38,59,.15);--max:1240px}
+body{background:radial-gradient(920px 560px at 90% -10%,rgba(190,0,24,.29),transparent 67%),radial-gradient(700px 520px at -18% 39%,rgba(105,0,17,.18),transparent 70%),linear-gradient(180deg,#080809 0%,#050506 64%,#080809 100%);letter-spacing:.005em}
+.topbar{border-bottom-color:rgba(255,38,59,.24);box-shadow:0 8px 34px rgba(0,0,0,.42)}
+.brand-mark{border-radius:10px;background:linear-gradient(145deg,#5a0b16,#13090c);border-color:rgba(255,55,72,.7);box-shadow:0 0 32px rgba(255,38,59,.24)}
+.nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,38,59,.12)}
+.nav-cta,.btn-primary{background:linear-gradient(135deg,#ff3445,#a90012);border-color:#ff5968;box-shadow:0 10px 30px rgba(220,0,27,.28),inset 0 1px rgba(255,255,255,.18)}
+.btn-secondary{border-color:#47404a;background:linear-gradient(145deg,#191419,#101014)}
+.eyebrow{border-color:rgba(255,54,72,.52);background:linear-gradient(100deg,rgba(255,38,59,.18),rgba(75,0,14,.12));color:#ff929b}
+h1 span{color:#ff3448;text-shadow:0 0 42px rgba(255,38,59,.34)}
+.radar{border-color:rgba(255,38,59,.39);box-shadow:0 0 120px rgba(190,0,24,.2),inset 0 0 82px rgba(190,0,24,.13)}
+.radar-center{background:radial-gradient(circle at 35% 30%,#68121f,#10080b 68%);border-color:rgba(255,65,82,.74);box-shadow:0 0 70px rgba(255,38,59,.25)}
+.stats{border-color:#393039;background:linear-gradient(110deg,rgba(32,12,17,.88),rgba(13,13,17,.94));box-shadow:0 16px 42px #0005}
+.stat strong span{color:#ff3448}
+.section-kicker{color:#ff5968}
+.source-alert{border-color:rgba(255,44,63,.48);background:linear-gradient(100deg,rgba(83,5,17,.68),rgba(14,14,18,.88));box-shadow:inset 3px 0 #ff263b,0 12px 28px #0004}
+.filter:hover,.filter.active{background:rgba(255,38,59,.17);border-color:rgba(255,66,82,.8);color:#ff9aa2}
+.search input:focus{border-color:#ff3448;box-shadow:0 0 0 3px rgba(255,38,59,.13)}
+.tool-card{position:relative;background:linear-gradient(155deg,rgba(24,20,24,.99),rgba(8,8,11,.99) 72%);border:1px solid #383038;border-radius:13px;box-shadow:0 12px 34px rgba(0,0,0,.3);overflow:hidden}
+.tool-card:before{content:"";position:absolute;z-index:3;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,#ff263b 18%,#ff6975 52%,#97000f 82%,transparent);opacity:.8;pointer-events:none}
+.tool-card:hover{transform:translateY(-5px);border-color:rgba(255,53,72,.82);box-shadow:0 20px 52px rgba(0,0,0,.62),0 0 34px rgba(190,0,24,.19)}
+.card-preview{position:relative;display:flex;flex-direction:column;background:#08080b}
+.preview-image-link{display:block;overflow:hidden;background:#10090d}
+.preview{height:205px;border-bottom:1px solid rgba(255,45,64,.24);background:radial-gradient(circle at 73% 30%,#681320,#1a0c12 48%,#09090c 78%)}
+.preview:after{background:linear-gradient(180deg,rgba(0,0,0,.02),transparent 42%,rgba(0,0,0,.48))}
+.preview-label{border-color:rgba(255,255,255,.22);background:rgba(5,5,7,.86)}
+.preview-version{border-color:rgba(255,57,74,.72);background:rgba(55,5,13,.9);color:#ff9ca4}
+.preview-quick-actions{position:static;z-index:auto;left:auto;right:auto;bottom:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:12px;background:linear-gradient(180deg,#100b0f,#09090c);border-top:1px solid rgba(255,38,59,.24);pointer-events:auto}
+.quick-download{pointer-events:auto;display:flex;align-items:center;justify-content:center;min-width:0;min-height:46px;padding:12px 10px;border:1px solid #ff6572;background:linear-gradient(135deg,#ff3445,#a90012);backdrop-filter:none;color:#fff;border-radius:9px;font-size:10px;font-weight:900;letter-spacing:.1em;text-align:center;box-shadow:0 7px 20px rgba(210,0,25,.24),inset 0 1px rgba(255,255,255,.19);transition:transform .18s,filter .18s,box-shadow .18s}
+.quick-download:hover{background:linear-gradient(135deg,#ff5968,#c60019);border-color:#ff9aa2;transform:translateY(-2px);box-shadow:0 10px 24px rgba(230,0,30,.36)}
+.card-body{padding:18px 19px 15px;background:linear-gradient(180deg,rgba(20,17,21,.72),rgba(12,12,15,.82))}
+.tool-card h3{font:900 18px Orbitron,sans-serif;letter-spacing:-.035em;margin:9px 0 10px;line-height:1.35}
+.tool-title-link{display:inline-block;color:#f8f8fa;text-decoration:none;transition:color .18s,text-shadow .18s}
+.tool-title-link:hover{color:#ff6673;text-shadow:0 0 20px rgba(255,38,59,.34)}
+.tool-title-link:focus-visible{outline:2px solid #ff3448;outline-offset:4px;border-radius:3px}
+.platform-tag{border-color:#4a3039;background:#1c1117;color:#ffadb4}
+.pill{border-color:#3d3037;background:#171217;color:#d7c9ce}
+.card-footer{border-top-color:#38262d;background:rgba(7,7,10,.6)}
+.card-buttons .download{background:linear-gradient(135deg,#ff3445,#a90012);border-color:#ff6572}
+.detail{position:relative}
+.detail .backline a{color:#ff6673}
+.detail-hero h1{text-shadow:0 8px 35px rgba(255,38,59,.13)}
+.panel{border-color:#383038;background:linear-gradient(150deg,rgba(22,17,22,.96),rgba(11,11,14,.97));box-shadow:0 12px 32px rgba(0,0,0,.2)}
+.file-row{border-color:#443139;background:linear-gradient(110deg,#191116,#101014)}
+.file-row a{background:linear-gradient(135deg,#ff3445,#a90012);border-color:#ff6572;box-shadow:0 5px 15px rgba(220,0,27,.2)}
+.official-note{border-color:rgba(255,38,59,.46);background:rgba(255,38,59,.1)}
+.warp-panel{border-color:rgba(255,38,59,.58);box-shadow:0 20px 52px rgba(0,0,0,.44),0 0 36px rgba(190,0,24,.12)}
+.footer{border-top-color:#38262d}
+@media(max-width:680px){
+ .preview{height:190px}
+ .preview-quick-actions{grid-template-columns:1fr;padding:10px;gap:7px}
+ .quick-download{min-height:48px;font-size:11px;letter-spacing:.12em}
+ .tool-card h3{font-size:17px}
+ .card-body{padding:16px 15px 14px}
+}
+
 </style>
 </head>
 <body>
@@ -129,7 +186,7 @@ function go(path){location.hash=path;nav.classList.remove('open');}
 function previewMarkup(t){return '<div class="preview" data-fallback="'+esc(t.fallback)+'"><img src="'+esc(t.preview)+'" alt="'+esc(t.name)+' — официальный preview из GitHub" loading="lazy" referrerpolicy="no-referrer"><span class="preview-label"><i></i> OFFICIAL GITHUB SOURCE</span><span class="preview-version" data-version="'+esc(t.id)+'">'+esc(t.version)+'</span></div>';}
 function cardMarkup(t){
  const quick=quickAssets(t).map(a=>'<a class="quick-download" href="'+esc(a.url)+'" title="'+esc(a.name)+'" target="_blank" rel="noopener noreferrer" download>'+esc(quickLabel(a))+' ↓</a>').join('');
- return '<article class="tool-card"><div class="card-preview"><a class="preview-image-link" href="#/tool/'+esc(t.id)+'" aria-label="Открыть описание '+esc(t.name)+'">'+previewMarkup(t)+'</a><div class="preview-quick-actions">'+quick+'</div></div><div class="card-body"><div class="card-meta">'+esc(t.category)+' / '+esc(t.author)+'</div><div class="card-title-row"><h3>'+esc(t.name)+'</h3><span class="platform-tag">'+esc(t.platform)+'</span></div><p>'+esc(t.summary)+'</p><div class="pills">'+t.tags.map(x=>'<span class="pill">'+esc(x)+'</span>').join('')+'</div></div><div class="card-footer"><div class="author"><b>OFFICIAL AUTHOR · '+esc(t.author)+'</b><span data-release-date="'+esc(t.id)+'">Release '+esc(t.published)+'</span></div><div class="card-buttons"><button data-detail="'+esc(t.id)+'">ВСЕ ФАЙЛЫ / INFO</button></div></div></article>';
+ return '<article class="tool-card"><div class="card-preview"><a class="preview-image-link" href="#/tool/'+esc(t.id)+'" aria-label="Открыть описание '+esc(t.name)+'">'+previewMarkup(t)+'</a><div class="preview-quick-actions">'+quick+'</div></div><div class="card-body"><div class="card-meta">'+esc(t.category)+' / '+esc(t.author)+'</div><div class="card-title-row"><h3><a class="tool-title-link" href="#/tool/'+esc(t.id)+'" aria-label="Открыть страницу '+esc(t.name)+'">'+esc(t.name)+'</a></h3><span class="platform-tag">'+esc(t.platform)+'</span></div><p>'+esc(t.summary)+'</p><div class="pills">'+t.tags.map(x=>'<span class="pill">'+esc(x)+'</span>').join('')+'</div></div><div class="card-footer"><div class="author"><b>OFFICIAL AUTHOR · '+esc(t.author)+'</b><span data-release-date="'+esc(t.id)+'">Release '+esc(t.published)+'</span></div><div class="card-buttons"><button data-detail="'+esc(t.id)+'">ВСЕ ФАЙЛЫ / INFO</button></div></div></article>';
 }
 function homeView(){
  const q=state.query.toLowerCase();
