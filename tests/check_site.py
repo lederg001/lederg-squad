@@ -43,7 +43,7 @@ class LedgergSquadSmokeTests(unittest.TestCase):
             self.assertIn(variant, HTML)
 
     def test_warp_has_preview_and_direct_official_installer(self):
-        self.assertIn("https://1111-releases.cloudflareclient.com/win/latest", HTML)
+        self.assertIn("https://downloads.cloudflareclient.com/v1/download/windows/ga", HTML)
         self.assertIn("warp-preview", HTML)
         self.assertIn("warp-visual", HTML)
         self.assertIn("Cloudflare WARP", HTML)
@@ -84,7 +84,7 @@ class LedgergSquadSmokeTests(unittest.TestCase):
     def test_all_release_assets_are_listed_not_only_hardcoded_archives(self):
         self.assertIn('for asset in release.get("assets", [])', MONITOR)
         self.assertIn('browser_download_url', MONITOR)
-        self.assertIn('data.assets', HTML)
+        self.assertIn('release.assets.map(a=>normaliseAsset', HTML)
 
     def test_warp_offers_all_consumer_platform_download_routes(self):
         for platform in ("Windows", "macOS", "Linux", "Android", "iOS"):
