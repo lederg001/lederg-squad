@@ -1,7 +1,7 @@
 {
-  "name": "LEDERG SQUAD",
+  "name": "LEDERG SQUAD — Official Network Tools",
   "short_name": "LEDERG SQUAD",
-  "description": "Official LEDERG software hub",
+  "description": "Официальные источники и загрузки DPI tools, Telegram WS Proxy и Cloudflare WARP.",
   "start_url": "./#/",
   "scope": "./",
   "display": "standalone",
