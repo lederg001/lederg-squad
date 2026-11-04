@@ -1,5 +1,5 @@
 'use strict';
-const CACHE_NAME = 'lederg-squad-static-v1';
+const CACHE_NAME = 'lederg-squad-static-v2';
 const APP_SHELL = [
   './',
   './index.html',
