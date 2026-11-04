@@ -29,6 +29,18 @@ jobs:
           python-version: "3.x"
       - name: Run site smoke tests
         run: python tests/check_site.py
+      - name: Validate inline JavaScript syntax
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          html = Path("index.html").read_text(encoding="utf-8")
+          match = re.search(r"<script>(.*?)</script>", html, re.S)
+          if not match:
+              raise SystemExit("Inline script not found")
+          Path("/tmp/lederg-squad.js").write_text(match.group(1), encoding="utf-8")
+          PY
+          node --check /tmp/lederg-squad.js
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload site
