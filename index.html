@@ -107,7 +107,7 @@ const bytes=n=>{if(!n)return'';const units=['B','KB','MB','GB'];let i=0,x=n;whil
 const primaryAsset=t=>{
  const n=a=>String(a.name||'').toLowerCase();
  const preferred={zapret:a=>n(a).endsWith('.zip'),byebye:a=>n(a).endsWith('.apk')&&n(a).includes('universal'),tgproxy:a=>n(a)==='tgwsproxy_windows.exe',tgproxyandroid:a=>n(a).endsWith('.apk')&&n(a).includes('universal')}[t.id];
- return (preferred&&t.assets.find(preferred))||t.assets.find(a=>a.os==='Windows'&&/\\.exe$/i.test(a.name))||t.assets.find(a=>a.key==='arm64')||t.assets[0];
+ return (preferred&&t.assets.find(preferred))||t.assets.find(a=>a.os==='Windows'&&/\.exe$/i.test(a.name))||t.assets.find(a=>a.key==='arm64')||t.assets[0];
 };
 const quickAssets=t=>{
  const n=a=>String(a.name||'').toLowerCase();
@@ -228,7 +228,7 @@ async function refreshReleases(){
   t.published=(r.published||r.published_at||t.published||'').slice(0,10);
   if(Array.isArray(r.assets)&&r.assets.length){
    t.assets=r.assets.map(a=>({name:a.name,label:a.label||a.name,os:a.os||'',url:a.url||a.browser_download_url,key:a.key||'',size:a.size||0})).filter(a=>a.url);
-   t.primary=t.assets.find(a=>['zip','win64','universal'].includes(a.key))?.name||t.assets[0]?.name;
+   const preferred=primaryAsset(t);if(preferred)t.primary=preferred.name;
   }
  };
  try{
