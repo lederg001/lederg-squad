@@ -76,6 +76,30 @@ class LedgergSquadSmokeTests(unittest.TestCase):
         self.assertIn("cron:", WORKFLOW)
         self.assertIn("releases.json", HTML)
 
+
+    def test_preview_click_opens_internal_tool_page(self):
+        self.assertIn('class="card-preview preview-open"', HTML)
+        self.assertIn('href="#/tool/', HTML)
+
+    def test_all_release_assets_are_listed_not_only_hardcoded_archives(self):
+        self.assertIn('for asset in release.get("assets", [])', MONITOR)
+        self.assertIn('browser_download_url', MONITOR)
+        self.assertIn('data.assets', HTML)
+
+    def test_warp_offers_all_consumer_platform_download_routes(self):
+        for platform in ("Windows", "macOS", "Linux", "Android", "iOS"):
+            self.assertIn(platform, HTML)
+        self.assertIn("downloads.cloudflareclient.com/v1/download/windows/ga", HTML)
+        self.assertIn("downloads.cloudflareclient.com/v1/download/macos/ga", HTML)
+        self.assertIn("pkg.cloudflareclient.com", HTML)
+        self.assertIn("play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone", HTML)
+        self.assertIn("apps.apple.com/app/1-1-1-1-faster-internet/id1423538627", HTML)
+
+    def test_site_purpose_explains_verified_originals_and_stealer_risk(self):
+        self.assertIn("во избежание стиллеров", HTML)
+        self.assertIn("проверенных источников", HTML)
+        self.assertIn("независимый аудит", HTML)
+
     def test_external_links_open_safely(self):
         for anchor in re.findall(r'<a[^>]+target="_blank"[^>]*>', HTML):
             self.assertIn('rel="noopener noreferrer"', anchor)
