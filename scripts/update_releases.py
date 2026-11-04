@@ -53,8 +53,8 @@ def asset_details(project_id: str, asset: dict) -> dict:
 
     arch = ""
     for pattern, label in [
-        (r"arm64|aarch64", "ARM64"), (r"arm32|armeabi|32bit|x86(?=[._-]|$)", "32-bit / x86"),
-        (r"x86_64|amd64|64bit", "x64"),
+        (r"x86_64|amd64|64bit", "x64"), (r"arm64|aarch64", "ARM64"),
+        (r"arm32|armeabi|32bit|x86(?=[._-]|$)", "32-bit / x86"),
         (r"universal", "Universal"),
     ]:
         if re.search(pattern, low):
