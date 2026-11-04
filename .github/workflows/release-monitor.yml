@@ -1,0 +1,51 @@
+name: Monitor official releases
+
+on:
+  schedule:
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-monitor
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+      - name: Refresh official release manifest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/update_releases.py
+      - name: Validate release manifest
+        run: |
+          python - <<'PY'
+          import json
+          data=json.load(open("releases.json", encoding="utf-8"))
+          required={"zapret","byebye","tgproxy","tgproxyandroid"}
+          assert required.issubset(data["projects"]), data["projects"].keys()
+          for key in required:
+              assert data["projects"][key]["assets"], key
+              assert all(a["url"].startswith("https://") for a in data["projects"][key]["assets"])
+          assert data["warp"]["download"].startswith("https://1111-releases.cloudflareclient.com/")
+          PY
+      - name: Commit manifest when changed
+        run: |
+          if git diff --quiet -- releases.json; then
+            echo "Release manifest is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add releases.json
+          git commit -m "chore: refresh official release manifest"
+          git push
