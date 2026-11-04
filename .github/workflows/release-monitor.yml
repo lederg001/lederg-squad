@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: release-monitor
@@ -15,6 +17,9 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -39,8 +44,10 @@ jobs:
           assert data["warp"]["download"].startswith("https://1111-releases.cloudflareclient.com/")
           PY
       - name: Commit manifest when changed
+        id: commit
         run: |
           if git diff --quiet -- releases.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "Release manifest is already current."
             exit 0
           fi
@@ -49,3 +56,16 @@ jobs:
           git add releases.json
           git commit -m "chore: refresh official release manifest"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Configure Pages
+        if: steps.commit.outputs.changed == 'true'
+        uses: actions/configure-pages@v5
+      - name: Upload site
+        if: steps.commit.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: "."
+      - name: Deploy updated release manifest
+        if: steps.commit.outputs.changed == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4
