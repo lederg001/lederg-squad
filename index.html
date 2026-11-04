@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#09090b">
+  <meta name="description" content="LEDERG SQUAD — официальный каталог программ, инструментов и загрузок LEDERG.">
+  <title>LEDERG SQUAD — Software Division</title>
+  <link rel="icon" href="./assets/brand.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#080809;--panel:#101012;--panel2:#151518;--line:#242428;--muted:#92929c;--text:#f4f4f5;--red:#f02b35;--red2:#a90d18;--soft:rgba(240,43,53,.12);--radius:19px;--max:1180px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(900px 500px at 80% -5%,rgba(142,12,24,.18),transparent 65%),radial-gradient(600px 440px at -10% 35%,rgba(94,12,20,.12),transparent 65%),var(--bg);color:var(--text);font-family:Manrope,Arial,sans-serif;min-height:100vh}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(to bottom,black,transparent 80%);z-index:-1}
+    a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}
+    .shell{width:min(var(--max),calc(100% - 44px));margin:0 auto}
+    .topbar{position:sticky;top:0;z-index:20;background:rgba(8,8,9,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .brand-mark{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#321014,#12090b);border:1px solid rgba(240,43,53,.5);box-shadow:0 0 28px rgba(240,43,53,.13);flex:none}
+    .brand-mark svg{width:29px;height:29px}
+    .brand-name{font:900 15px Orbitron,sans-serif;letter-spacing:.11em;white-space:nowrap}
+    .brand-name span{color:var(--red)}
+    .brand-sub{display:block;color:#81818a;font-size:9px;letter-spacing:.24em;margin-top:4px}
+    .nav-links{display:flex;align-items:center;gap:8px}
+    .nav-link{border:0;background:transparent;color:#a7a7af;padding:11px 14px;border-radius:10px;font-size:12px;font-weight:800;letter-spacing:.04em;transition:.2s}
+    .nav-link:hover,.nav-link.active{color:#fff;background:rgba(255,255,255,.06)}
+    .nav-cta,.btn-primary{border:1px solid rgba(255,73,82,.62);background:linear-gradient(135deg,#e52b35,#a70e19);color:white;border-radius:11px;padding:12px 17px;font-size:11px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;box-shadow:0 8px 28px rgba(201,23,35,.2);transition:transform .2s,filter .2s}
+    .nav-cta:hover,.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.12)}
+    .hero{padding:82px 0 54px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:46px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(240,43,53,.3);background:rgba(240,43,53,.08);border-radius:99px;padding:8px 12px;color:#ff6b73;font-size:9px;font-weight:900;letter-spacing:.2em;text-transform:uppercase}
+    .pulse{width:7px;height:7px;border-radius:50%;background:#ff3d49;box-shadow:0 0 12px #ff3d49}
+    h1{font:900 clamp(42px,6.8vw,76px)/.98 Orbitron,sans-serif;letter-spacing:-.065em;margin:23px 0 18px;text-transform:uppercase}
+    h1 span{display:block;color:var(--red);text-shadow:0 0 34px rgba(240,43,53,.22)}
+    .hero-copy{max-width:570px;color:#a7a7ae;font-size:14px;line-height:1.85;margin:0}
+    .hero-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:27px}
+    .btn-secondary{border:1px solid #38383e;background:rgba(255,255,255,.035);color:#e5e5e7;border-radius:11px;padding:12px 17px;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;transition:.2s}
+    .btn-secondary:hover{border-color:#777;color:white;background:rgba(255,255,255,.07)}
+    .hero-art{position:relative;min-height:330px;display:grid;place-items:center}
+    .hero-ring{width:min(310px,78vw);aspect-ratio:1;border:1px solid rgba(240,43,53,.27);border-radius:50%;display:grid;place-items:center;position:relative;box-shadow:0 0 100px rgba(159,12,25,.12),inset 0 0 70px rgba(159,12,25,.08)}
+    .hero-ring:before,.hero-ring:after{content:"";position:absolute;inset:20px;border:1px dashed rgba(240,43,53,.23);border-radius:50%}
+    .hero-ring:after{inset:48px;border-style:solid;border-color:rgba(255,255,255,.07)}
+    .hero-emblem{width:66%;position:relative;z-index:2;filter:drop-shadow(0 15px 32px rgba(240,43,53,.24))}
+    .orbit{position:absolute;width:10px;height:10px;background:#f13a44;border-radius:50%;box-shadow:0 0 20px #f13a44;top:13%;right:14%}
+    .orbit.two{width:6px;height:6px;top:auto;right:auto;bottom:14%;left:12%;opacity:.7}
+    .art-label{position:absolute;right:0;bottom:20px;background:#111113;border:1px solid #2b2b30;border-radius:12px;padding:12px 15px;box-shadow:0 14px 35px rgba(0,0,0,.35)}
+    .art-label strong{font:800 10px Orbitron;letter-spacing:.12em;display:block}
+    .art-label small{display:block;color:#8e8e97;font-size:9px;margin-top:5px;letter-spacing:.12em}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:rgba(17,17,19,.7);border-radius:16px;overflow:hidden;margin:0 0 66px}
+    .stat{padding:18px 22px;border-right:1px solid var(--line)}
+    .stat:last-child{border-right:0}
+    .stat strong{display:block;font:800 21px Orbitron;color:#fff}
+    .stat strong span{color:var(--red)}
+    .stat small{display:block;color:#85858e;font-size:9px;text-transform:uppercase;letter-spacing:.16em;margin-top:7px}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:24px}
+    .section-kicker{font-size:9px;font-weight:900;color:var(--red);letter-spacing:.24em;text-transform:uppercase}
+    h2{font:800 clamp(25px,3.5vw,37px) Orbitron,sans-serif;letter-spacing:-.045em;margin:8px 0 0;text-transform:uppercase}
+    .section-note{font-size:11px;color:#898991;max-width:340px;line-height:1.7;text-align:right}
+    .toolbar{display:flex;gap:12px;align-items:center;justify-content:space-between;margin:0 0 22px;flex-wrap:wrap}
+    .filters{display:flex;gap:7px;flex-wrap:wrap}
+    .filter{border:1px solid #2b2b30;background:#111113;color:#92929a;border-radius:99px;padding:9px 13px;font-size:10px;font-weight:900;letter-spacing:.05em;transition:.2s}
+    .filter:hover,.filter.active{background:var(--soft);border-color:rgba(240,43,53,.55);color:#ff7980}
+    .search{position:relative;min-width:min(270px,100%)}
+    .search input{width:100%;background:#111113;border:1px solid #2b2b30;border-radius:11px;padding:12px 14px 12px 39px;color:white;outline:none;font-size:11px}
+    .search input:focus{border-color:rgba(240,43,53,.7);box-shadow:0 0 0 3px rgba(240,43,53,.08)}
+    .search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:15px;height:15px;stroke:#83838d}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .card{position:relative;overflow:hidden;background:linear-gradient(155deg,rgba(23,23,26,.98),rgba(13,13,15,.98));border:1px solid #29292e;border-radius:18px;min-height:270px;display:flex;flex-direction:column;transition:transform .22s,border-color .22s,box-shadow .22s}
+    .card:hover{transform:translateY(-5px);border-color:rgba(240,43,53,.54);box-shadow:0 20px 48px rgba(0,0,0,.28),0 0 36px rgba(157,13,25,.08)}
+    .card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(240,43,53,.08);filter:blur(45px);right:-80px;top:-90px;pointer-events:none}
+    .card-top{display:flex;align-items:center;justify-content:space-between;padding:18px 18px 0;position:relative;z-index:1}
+    .app-icon{width:44px;height:44px;border-radius:13px;background:linear-gradient(145deg,#321014,#161012);border:1px solid rgba(240,43,53,.36);display:grid;place-items:center;color:#ff5c66;font:900 14px Orbitron;box-shadow:inset 0 0 20px rgba(240,43,53,.08)}
+    .app-icon.warp{font-size:19px}
+    .status{font-size:8px;color:#ff7a82;border:1px solid rgba(240,43,53,.24);background:rgba(240,43,53,.08);padding:6px 8px;border-radius:99px;letter-spacing:.1em;font-weight:900;text-transform:uppercase}
+    .card-body{padding:17px 18px 16px;flex:1;position:relative;z-index:1}
+    .card-meta{color:#8b8b94;font-size:8px;letter-spacing:.18em;text-transform:uppercase;font-weight:900}
+    .card h3{font:800 17px Orbitron,sans-serif;letter-spacing:-.025em;margin:8px 0}
+    .card p{font-size:11px;line-height:1.75;color:#9b9ba4;margin:0}
+    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:15px}
+    .tag{background:#1c1c20;border:1px solid #2b2b30;border-radius:7px;padding:5px 7px;color:#a5a5ad;font-size:8px;font-weight:800;letter-spacing:.06em}
+    .card-actions{display:flex;gap:8px;padding:0 18px 18px;position:relative;z-index:1}
+    .card-actions button,.card-actions a{flex:1;text-align:center;border:1px solid #36363c;background:#19191d;border-radius:9px;color:#e7e7ea;padding:10px 8px;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;transition:.2s}
+    .card-actions .go{background:linear-gradient(135deg,#df2732,#97101a);border-color:#cf202c;color:white}
+    .card-actions button:hover,.card-actions a:hover{filter:brightness(1.18);border-color:#e43a44}
+    .empty{display:none;grid-column:1/-1;text-align:center;padding:48px 20px;border:1px dashed #35353a;border-radius:16px;color:#898991;font-size:12px}
+    .warp-banner{margin:70px 0 74px;position:relative;overflow:hidden;border:1px solid rgba(240,43,53,.42);border-radius:21px;background:linear-gradient(110deg,rgba(39,9,14,.92),rgba(16,16,19,.97) 65%);padding:30px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px}
+    .warp-banner:after{content:"";position:absolute;width:340px;height:240px;right:-110px;top:-100px;background:radial-gradient(circle,rgba(240,43,53,.21),transparent 68%);pointer-events:none}
+    .warp-banner h2{font-size:25px}
+    .warp-banner p{margin:10px 0 0;max-width:610px;color:#a8a8b0;font-size:12px;line-height:1.8}
+    .warp-symbol{font:900 48px Orbitron;color:#f23a45;letter-spacing:-.12em;padding:0 26px;text-shadow:0 0 32px rgba(240,43,53,.32)}
+    .detail-head{padding:55px 0 28px}
+    .breadcrumbs{color:#7e7e87;font-size:10px;margin-bottom:23px}
+    .breadcrumbs button{border:0;background:none;color:#ff6e77;padding:0;font:inherit}
+    .detail-title{display:flex;align-items:center;gap:20px}
+    .detail-title .app-icon{width:62px;height:62px;border-radius:17px;font-size:17px}
+    .detail-title h1{font-size:clamp(31px,5vw,52px);margin:0}
+    .detail-title p{margin:8px 0 0;color:#9b9ba4;font-size:12px}
+    .detail-layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:20px;padding-bottom:70px}
+    .detail-main,.side-panel,.doc-panel{background:rgba(17,17,19,.85);border:1px solid #29292e;border-radius:17px;padding:24px}
+    .detail-main h2,.doc-panel h2{font-size:19px;margin:0 0 14px}
+    .detail-main p,.doc-panel p,.doc-panel li{font-size:12px;line-height:1.85;color:#a5a5ad}
+    .detail-main h3,.doc-panel h3{font:700 12px Orbitron;color:#fff;letter-spacing:.07em;margin:24px 0 10px}
+    .feature-list{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:18px 0}
+    .feature{padding:12px;border:1px solid #29292e;background:#141417;border-radius:11px;color:#c6c6cc;font-size:10px;display:flex;gap:10px;align-items:center}
+    .feature:before{content:"+";color:var(--red);font-weight:900;font-size:16px}
+    .side-panel{height:max-content}
+    .side-panel h3{font:700 10px Orbitron;letter-spacing:.14em;margin:0 0 14px}
+    .side-panel .btn-primary,.side-panel .btn-secondary{display:block;width:100%;text-align:center;margin-bottom:9px}
+    .side-panel .small-note{color:#777780;font-size:9px;line-height:1.6;margin-top:15px}
+    .doc-panel{margin-bottom:70px;max-width:900px}
+    .doc-panel ul{padding-left:18px}
+    .doc-panel li{padding:3px 0}
+    .doc-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+    .doc-links a{border:1px solid #36363b;border-radius:9px;padding:10px 13px;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+    .doc-links a:hover{border-color:var(--red);color:#ff6e77}
+    .warp-page-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:24px 0}
+    .warp-platform{border:1px solid #2b2b30;background:#141417;border-radius:13px;padding:16px}
+    .warp-platform strong{font:700 11px Orbitron;display:block}
+    .warp-platform span{display:block;color:#898991;font-size:9px;margin:7px 0 12px}
+    .warp-platform a{display:inline-block;color:#ff7880;font-size:9px;font-weight:900;letter-spacing:.08em}
+    .footer{border-top:1px solid #252529;margin-top:20px;padding:27px 0 32px;color:#767680;font-size:9px;display:flex;align-items:center;justify-content:space-between;gap:15px;letter-spacing:.1em;text-transform:uppercase}
+    .footer strong{color:#d4d4d8;font-family:Orbitron}
+    .footer a{color:#ff6b74}
+    .toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#1c1c20;border:1px solid #48484e;border-radius:10px;padding:11px 15px;color:#f4f4f5;font-size:11px;z-index:100;transition:.25s}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .mobile-menu{display:none;border:1px solid #34343a;background:#151518;color:white;width:40px;height:40px;border-radius:10px;font-size:18px}
+    @media(max-width:900px){.hero{grid-template-columns:1fr .7fr;gap:15px;padding-top:60px}.grid{grid-template-columns:repeat(2,1fr)}.detail-layout{grid-template-columns:1fr 230px}}
+    @media(max-width:650px){.shell{width:min(100% - 28px,var(--max))}.nav{height:65px}.brand-mark{width:38px;height:38px}.nav-links{display:none;position:absolute;top:64px;left:14px;right:14px;padding:10px;background:#111113;border:1px solid #303036;border-radius:13px;flex-direction:column;align-items:stretch}.nav-links.open{display:flex}.nav-link{text-align:left}.nav-cta{display:none}.mobile-menu{display:block}.hero{grid-template-columns:1fr;padding:48px 0 35px}.hero-art{min-height:220px;grid-row:1}.hero-ring{width:210px}.art-label{right:5px;bottom:0}.hero-copy{font-size:12px}.stats{margin-bottom:47px}.stat{padding:14px 10px}.stat strong{font-size:16px}.stat small{font-size:7px;letter-spacing:.1em}.section-head{align-items:flex-start;flex-direction:column}.section-note{text-align:left}.toolbar{align-items:stretch}.search{width:100%}.grid{grid-template-columns:1fr}.card{min-height:240px}.warp-banner{grid-template-columns:1fr;padding:23px;margin:52px 0}.warp-symbol{display:none}.detail-layout{grid-template-columns:1fr}.detail-head{padding-top:38px}.detail-title{align-items:flex-start;gap:13px}.detail-title .app-icon{width:50px;height:50px}.detail-title h1{font-size:29px}.detail-title p{font-size:10px}.feature-list,.warp-page-grid{grid-template-columns:1fr}.detail-main,.side-panel,.doc-panel{padding:18px}.footer{flex-direction:column;align-items:flex-start;line-height:1.8}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <a class="brand" href="#/">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M8 35 13 15l7 8 4-14 5 14 7-8 4 20H8Z" stroke="#ff4652" stroke-width="2.4" stroke-linejoin="round"/><path d="M15 35h18M19 30h10" stroke="#f6f6f7" stroke-width="2" stroke-linecap="round"/><path d="m24 4 2 4 4 1-4 2-2 4-2-4-4-2 4-1 2-4Z" fill="#ff4652"/></svg></span>
+        <span><span class="brand-name">LEDERG <span>SQUAD</span></span><span class="brand-sub">SOFTWARE DIVISION</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a class="nav-link active" href="#/">КАТАЛОГ</a>
+        <a class="nav-link" href="#/warp">CLOUDFLARE WARP</a>
+        <a class="nav-link" href="#/about">О ПРОЕКТЕ</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:10px">
+        <a class="nav-cta" href="#/catalog">Открыть каталог</a>
+        <button class="mobile-menu" id="mobileMenu" aria-label="Открыть меню">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" class="shell" aria-live="polite"></main>
+
+  <footer class="shell footer">
+    <span>© <strong>LEDERG SQUAD</strong> · SOFTWARE DIVISION</span>
+    <span>BUILT FOR THE <a href="#/">SQUAD</a> · <span id="year"></span></span>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  (() => {
+    'use strict';
+
+    const WARP_DOWNLOADS = 'https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/';
+    const PRODUCTS = [
+      {
+        id:'music', name:'LEDERG MUSIC', category:'МЕДИА', icon:'♪', state:'WEB APP',
+        subtitle:'Музыка и видео в едином плеере',
+        description:'Музыкальная платформа LEDERG: личная медиатека, воспроизведение аудио и видео, удобное управление плейлистом и фоновое прослушивание.',
+        website:'https://lederg-music.cc.cd',
+        repo:'https://github.com/LEDERG777-TEXNARIC/LEDERG-MUSIC-git',
+        tags:['MP3 / MP4','ФОНОВОЕ ВОСПРОИЗВЕДЕНИЕ','MY MUSIC'],
+        features:['MP3 с отображением метаданных','Поддержка MP4 и видео','Повтор трека и управление очередью','Избранное и раздел My Music','Фоновое воспроизведение','Управление через Android-уведомления и Bluetooth'],
+        readme:'Платформа LEDERG MUSIC объединяет аудио и видео в одном интерфейсе. Пользователь может открывать личную медиатеку, сохранять понравившиеся треки и управлять воспроизведением без лишних экранов.',
+        setup:['Открой веб-версию по кнопке «Запустить».','Добавляй доступные аудио- и видеофайлы в медиатеку.','Сохраняй избранное в My Music.','На мобильном устройстве разреши фоновые уведомления, чтобы использовать элементы управления плеером.'],
+        changes:['Собран единый интерфейс Main / My Music.','Добавлены подписи MP3 по метаданным и поддержка MP4.','Добавлены повтор трека, возврат к началу текущего трека и избранное.','Добавлено управление воспроизведением в фоне и через Bluetooth.'],
+        primary:'Запустить сайт', primaryUrl:'https://lederg-music.cc.cd'
+      },
+      {
+        id:'python', name:'LEDERG PYTHON', category:'РАЗРАБОТКА', icon:'Py', state:'WEB IDE',
+        subtitle:'Python IDE прямо в браузере',
+        description:'Браузерная среда разработки LEDERG с редактором, запуском кода, GUI Studio, Site Studio и инструментами работы с проектами.',
+        website:'https://lederg777-texnaric.github.io/lederg-python/',
+        repo:'https://github.com/LEDERG777-TEXNARIC/lederg-python',
+        tags:['PYTHON','GUI STUDIO','ZIP EXPORT'],
+        features:['Запуск Python в браузере','GUI Studio и Site Studio','Конструктор макетов и перетаскивание панелей','Вкладки редактора и подсветка ошибок','Автоустановка доступных зависимостей','Импорт / публикация проектов GitHub','Экспорт проекта в ZIP','Мобильная и планшетная адаптация'],
+        readme:'LEDERG PYTHON — браузерная среда для экспериментов и разработки. Выполнение происходит на стороне браузера; сайт не является полноценной заменой локальной Windows/Linux-среды.',
+        setup:['Открой IDE и создай проект или импортируй доступный файл.','Пиши код во вкладке редактора и запускай его из панели управления.','Для интерфейсов используй GUI Studio или Site Studio.','Сохраняй результат локально или экспортируй проект в ZIP.'],
+        changes:['Добавлены GUI Studio и Site Studio.','Добавлен выбор макетов и управление панелями.','Добавлены вкладки, буфер обмена и маркеры ошибок.','Добавлены GitHub import/upload, локальный runner и ZIP export.','Улучшена адаптация под мобильные устройства и планшеты.'],
+        primary:'Открыть IDE', primaryUrl:'https://lederg777-texnaric.github.io/lederg-python/'
+      },
+      {
+        id:'neiro', name:'LEDERG NEIRO', category:'AI / ИИ', icon:'N', state:'AI PROJECT',
+        subtitle:'Локальный ИИ и Telegram-инструменты',
+        description:'Проект нейросети LEDERG с упором на локальный запуск, работу с контекстом диалога и подключаемые инструменты.',
+        repo:'https://github.com/LEDERG777-TEXNARIC/lederg-neiro-site',
+        tags:['LOCAL AI','TELEGRAM','TOOLS'],
+        features:['Локальная модель с расчётом на CPU и ограниченную RAM','История чата и контекст предыдущих сообщений','Telegram-бот','Поддержка русского, украинского и английского языков','Поиск в интернете и подключаемые инструменты','Конфигурация через отдельные файлы'],
+        readme:'LEDERG NEIRO — экспериментальный AI-проект. Конкретные возможности зависят от выбранной сборки, локального оборудования и подключённых инструментов.',
+        setup:['Открой репозиторий проекта.','Проверь README и список зависимостей выбранной версии.','Для локального запуска используй конфигурацию своей машины.','Не публикуй токены бота, API-ключи и другие секреты в открытом репозитории.'],
+        changes:['Сформировано направление локального запуска на CPU.','Добавлено планирование контекста диалога и истории сообщений.','Определены интеграции Telegram, поиска и дополнительных инструментов.','Продумана мультиязычная обработка запросов.'],
+        primary:'Открыть репозиторий', primaryUrl:'https://github.com/LEDERG777-TEXNARIC/lederg-neiro-site'
+      },
+      {
+        id:'drive', name:'LEDERG DRIVE', category:'СЕРВИСЫ', icon:'D', state:'ONLINE SERVICE',
+        subtitle:'Личное хранилище и обмен файлами',
+        description:'Файловый сервис LEDERG для загрузки, скачивания и управления файлами через браузер с минималистичным интерфейсом.',
+        website:'https://lederg-drop.cc.cd',
+        tags:['UPLOAD','DOWNLOAD','FILE STORAGE'],
+        features:['Загрузка и скачивание файлов','Drag & drop для загрузки','Авторизация пользователя','Локальное хранилище на сервере','Компактный интерфейс в чёрно-красной теме'],
+        readme:'LEDERG DRIVE — файловый веб-сервис с серверным хранилищем. Доступность операций зависит от состояния сервера и настроек учётной записи.',
+        setup:['Открой веб-сервис.','Войди в свою учётную запись.','Перетаскивай файлы в область загрузки или используй кнопку выбора файла.','Скачивай сохранённые материалы из списка.'],
+        changes:['Добавлены вход и базовые операции с файлами.','Добавлена загрузка перетаскиванием.','Добавлены скачивание и управление файлами.','Настроен фирменный интерфейс LEDERG.'],
+        primary:'Открыть Drive', primaryUrl:'https://lederg-drop.cc.cd'
+      },
+      {
+        id:'messenger', name:'LEDERG MESSENGER', category:'СВЯЗЬ', icon:'M', state:'MESSENGER',
+        subtitle:'Общение, чаты и WebRTC',
+        description:'Мессенджер LEDERG с аккаунтами, личными чатами и голосовыми/видеозвонками на базе WebRTC.',
+        website:'https://lederg-messenger.cc.cd',
+        repo:'https://github.com/LEDERG777-TEXNARIC/LEDERG-GOLDEX',
+        tags:['CHAT','WEBRTC','PWA'],
+        features:['Регистрация и вход в аккаунт','Личные чаты и сообщения','Голосовые и видеозвонки WebRTC','Индикаторы присутствия','PWA и мобильный интерфейс','Компактная чёрно-красная тема'],
+        readme:'LEDERG MESSENGER — веб-мессенджер LEDERG. Для звонков и обмена сообщениями требуется работающий сервер и корректно настроенное сетевое подключение.',
+        setup:['Открой веб-версию мессенджера.','Создай аккаунт или войди в существующий.','Открой диалог с собеседником.','Для звонков разреши браузеру доступ к микрофону и камере.'],
+        changes:['Сформирована основа пользовательских аккаунтов и чатов.','Добавлены WebRTC-звонки и индикаторы присутствия.','Добавлена PWA-адаптация.','Подготовлен интерфейс для мобильных экранов.'],
+        primary:'Открыть Messenger', primaryUrl:'https://lederg-messenger.cc.cd'
+      }
+    ];
+
+    const app = document.getElementById('app');
+    const navLinks = document.getElementById('navLinks');
+    const state = {filter:'ВСЕ', query:''};
+    const $ = (sel, root=document) => root.querySelector(sel);
+    const esc = (value) => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    const productById = id => PRODUCTS.find(item => item.id === id);
+
+    function go(path){ location.hash = path; navLinks.classList.remove('open'); }
+    function iconMarkup(product){ return '<div class="app-icon '+(product.id==='warp'?'warp':'')+'">'+esc(product.icon)+'</div>'; }
+    function cardMarkup(product){
+      const secondary = product.repo ? '<a href="'+esc(product.repo)+'" target="_blank" rel="noopener noreferrer">SOURCE</a>' : '<button data-action="readme" data-id="'+product.id+'">README</button>';
+      return '<article class="card" data-category="'+esc(product.category)+'">'+
+        '<div class="card-top">'+iconMarkup(product)+'<span class="status">'+esc(product.state)+'</span></div>'+
+        '<div class="card-body"><div class="card-meta">'+esc(product.category)+' / LEDERG SOFTWARE</div><h3>'+esc(product.name)+'</h3><p>'+esc(product.description)+'</p>'+
+        '<div class="tags">'+product.tags.map(tag=>'<span class="tag">'+esc(tag)+'</span>').join('')+'</div></div>'+
+        '<div class="card-actions"><button data-action="details" data-id="'+product.id+'">Подробнее</button>'+
+        (product.primaryUrl?'<a class="go" href="'+esc(product.primaryUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(product.primary)+'</a>':secondary)+'</div></article>';
+    }
+
+    function homeView(){
+      const filtered = PRODUCTS.filter(product => {
+        const categoryOk = state.filter==='ВСЕ' || product.category===state.filter;
+        const haystack = (product.name+' '+product.category+' '+product.description+' '+product.tags.join(' ')).toLowerCase();
+        return categoryOk && haystack.includes(state.query.toLowerCase());
+      });
+      app.innerHTML =
+        '<section class="hero"><div><span class="eyebrow"><i class="pulse"></i> OFFICIAL SOFTWARE HUB</span>'+
+        '<h1>TOOLS FOR <span>THE SQUAD.</span></h1>'+
+        '<p class="hero-copy">Официальная точка доступа к программам и цифровым инструментам LEDERG. Здесь собраны проекты, версии, инструкции и история обновлений в едином центре.</p>'+
+        '<div class="hero-actions"><a class="btn-primary" href="#/catalog">Перейти к программам</a><a class="btn-secondary" href="#/warp">Cloudflare WARP ↗</a></div></div>'+
+        '<div class="hero-art"><div class="hero-ring"><span class="orbit"></span><span class="orbit two"></span><svg class="hero-emblem" viewBox="0 0 260 280" fill="none" aria-hidden="true"><path d="M28 205 47 75l42 54 41-101 42 101 42-54 18 130H28Z" fill="#1c0c10" stroke="#f13a45" stroke-width="5" stroke-linejoin="round"/><path d="m60 191 70 40 70-40" stroke="#ad1722" stroke-width="6" stroke-linecap="round"/><path d="M83 162h94" stroke="#f8f8f8" stroke-width="4" stroke-linecap="round"/><path d="M96 175h68" stroke="#f13a45" stroke-width="5" stroke-linecap="round"/><path d="m130 2 12 25 27 5-20 19 5 27-24-14-24 14 5-27-20-19 27-5 12-25Z" fill="#f13a45" stroke="#ff9ba0" stroke-width="2"/><text x="130" y="254" text-anchor="middle" fill="#f7f7f7" font-size="21" font-family="Orbitron" font-weight="900" letter-spacing="3">LEDERG</text></svg></div><div class="art-label"><strong>LEDERG / SQUAD</strong><small>SOFTWARE DIVISION · EST. 2026</small></div></div></section>'+
+        '<div class="stats"><div class="stat"><strong>0<span>5</span></strong><small>Проектов LEDERG</small></div><div class="stat"><strong>0<span>1</span></strong><small>Отдельный WARP-раздел</small></div><div class="stat"><strong>24<span>/7</span></strong><small>Единая точка доступа</small></div></div>'+
+        '<section id="catalog"><div class="section-head"><div><div class="section-kicker">01 / SOFTWARE LIBRARY</div><h2>Каталог программ</h2></div><div class="section-note">Выбери проект, открой его описание, инструкцию или историю изменений.</div></div>'+
+        '<div class="toolbar"><div class="filters">'+['ВСЕ','МЕДИА','РАЗРАБОТКА','AI / ИИ','СЕРВИСЫ','СВЯЗЬ'].map(f=>'<button class="filter '+(state.filter===f?'active':'')+'" data-filter="'+f+'">'+f+'</button>').join('')+'</div>'+
+        '<label class="search"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><input id="searchInput" type="search" placeholder="Поиск программы..." value="'+esc(state.query)+'" autocomplete="off"></label></div>'+
+        '<div class="grid" id="catalogGrid">'+filtered.map(cardMarkup).join('')+'<div class="empty" style="display:'+(filtered.length?'none':'block')+'">Ничего не найдено. Измени запрос или категорию.</div></div></section>'+
+        '<section class="warp-banner"><div><div class="section-kicker">NETWORK TOOL / CLOUDFLARE</div><h2>Cloudflare WARP</h2><p>Отдельная страница с кратким описанием клиента, поддерживаемыми платформами и ссылкой на официальный центр загрузки Cloudflare.</p><div class="hero-actions"><a class="btn-primary" href="#/warp">Открыть страницу WARP</a></div></div><div class="warp-symbol">WARP</div></section>';
+      bindHome();
+    }
+
+    function bindHome(){
+      app.querySelectorAll('[data-filter]').forEach(btn=>btn.addEventListener('click',()=>{
+        state.filter=btn.dataset.filter; homeView();
+      }));
+      const search=$('#searchInput');
+      search.addEventListener('input',()=>{
+        const pos=search.selectionStart; state.query=search.value; homeView();
+        const next=$('#searchInput'); next.focus(); next.setSelectionRange(pos,pos);
+      });
+      app.querySelectorAll('[data-action]').forEach(btn=>btn.addEventListener('click',()=>{
+        const action=btn.dataset.action, id=btn.dataset.id;
+        go(action==='readme'?'#/tools/'+id+'/readme':'#/tools/'+id);
+      }));
+    }
+
+    function toolView(product){
+      app.innerHTML='<section class="detail-head"><div class="breadcrumbs"><a href="#/">SQUAD</a> / <a href="#/catalog">КАТАЛОГ</a> / '+esc(product.name)+'</div>'+
+        '<div class="detail-title">'+iconMarkup(product)+'<div><div class="section-kicker">'+esc(product.category)+' / PROJECT PROFILE</div><h1>'+esc(product.name)+'</h1><p>'+esc(product.subtitle)+'</p></div></div></section>'+
+        '<section class="detail-layout"><div class="detail-main"><h2>О проекте</h2><p>'+esc(product.description)+'</p><h3>ВОЗМОЖНОСТИ</h3><div class="feature-list">'+product.features.map(item=>'<div class="feature">'+esc(item)+'</div>').join('')+'</div><h3>КРАТКО</h3><p>'+esc(product.readme)+'</p></div>'+
+        '<aside class="side-panel"><h3>PROJECT ACTIONS</h3>'+
+        (product.primaryUrl?'<a class="btn-primary" href="'+esc(product.primaryUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(product.primary)+'</a>':'')+
+        (product.repo?'<a class="btn-secondary" href="'+esc(product.repo)+'" target="_blank" rel="noopener noreferrer">GitHub / Source ↗</a>':'')+
+        '<a class="btn-secondary" href="#/tools/'+product.id+'/readme">README / Инструкция</a><a class="btn-secondary" href="#/tools/'+product.id+'/changes">История изменений</a>'+
+        '<div class="small-note">Ссылки ведут на внешние сервисы проекта. Наличие отдельных сборок и релизных файлов определяется страницей соответствующего репозитория.</div></aside></section>';
+    }
+
+    function docView(product, type){
+      const isReadme=type==='readme';
+      const title=isReadme?'README / ИНСТРУКЦИЯ':'RELEASE NOTES / ИСТОРИЯ ИЗМЕНЕНИЙ';
+      const content=isReadme?'<p>'+esc(product.readme)+'</p><h3>КАК НАЧАТЬ</h3><ul>'+product.setup.map(line=>'<li>'+esc(line)+'</li>').join('')+'</ul><h3>ПЛАТФОРМЫ И ССЫЛКИ</h3><p>Актуальные версии, совместимость и загрузки проверяй в источнике проекта. Каталог не подменяет официальные релизные файлы.</p>':'<p>Сводка возможностей и этапов проекта, сохранённых в каталоге LEDERG SQUAD. Точные номера версий и даты релизов не указаны, если они не подтверждены исходным журналом.</p><ul>'+product.changes.map(line=>'<li>'+esc(line)+'</li>').join('')+'</ul>';
+      app.innerHTML='<section class="detail-head"><div class="breadcrumbs"><a href="#/">SQUAD</a> / <a href="#/tools/'+product.id+'">'+esc(product.name)+'</a> / '+(isReadme?'README':'CHANGES')+'</div>'+
+        '<div class="detail-title">'+iconMarkup(product)+'<div><div class="section-kicker">'+esc(product.category)+' / DOCUMENTATION</div><h1 style="font-size:clamp(25px,4vw,39px)">'+title+'</h1><p>'+esc(product.name)+'</p></div></div></section>'+
+        '<article class="doc-panel"><h2>'+title+'</h2>'+content+
+        '<div class="doc-links"><a href="#/tools/'+product.id+'">Карточка проекта</a><a href="#/tools/'+product.id+'/'+(isReadme?'changes':'readme')+'">'+(isReadme?'История изменений':'README')+'</a>'+
+        (product.repo?'<a href="'+esc(product.repo)+'" target="_blank" rel="noopener noreferrer">GitHub ↗</a>':'')+'</div></article>';
+    }
+
+    function warpView(){
+      app.innerHTML='<section class="detail-head"><div class="breadcrumbs"><a href="#/">SQUAD</a> / NETWORK TOOLS / CLOUDFLARE WARP</div><div class="detail-title"><div class="app-icon warp">W</div><div><div class="section-kicker">NETWORK / PRIVACY CLIENT</div><h1>CLOUDFLARE WARP</h1><p>Официальный клиент Cloudflare для защищённого сетевого подключения.</p></div></div></section>'+
+        '<section class="detail-layout"><div class="detail-main"><h2>Что такое WARP?</h2><p>Cloudflare WARP — клиент, который направляет сетевой трафик устройства через инфраструктуру Cloudflare. В зависимости от выбранного режима он может защищать весь трафик или использовать DNS-сервис 1.1.1.1.</p><h3>ПЛАТФОРМЫ</h3><div class="warp-page-grid">'+
+        [['Windows','Windows 10 LTSC / Windows 11','Поддерживаемые ПК и устройства Windows'],['macOS','Совместимые версии macOS','Intel и Apple silicon'],['Linux','Debian / Ubuntu / Fedora и другие поддерживаемые системы','Проверяй требования конкретного дистрибутива'],['iOS / Android','Мобильные устройства','Официальные магазины приложений']].map(row=>'<div class="warp-platform"><strong>'+row[0]+'</strong><span>'+row[1]+' · '+row[2]+'</span><a href="'+WARP_DOWNLOADS+'" target="_blank" rel="noopener noreferrer">ОФИЦИАЛЬНЫЕ ЗАГРУЗКИ ↗</a></div>').join('')+
+        '</div><h3>ВАЖНО</h3><p>Используй только официальные установщики Cloudflare. Перед установкой проверь системные требования своей операционной системы и различай обычный WARP и Cloudflare One Client для Zero Trust.</p></div>'+
+        '<aside class="side-panel"><h3>OFFICIAL LINKS</h3><a class="btn-primary" href="'+WARP_DOWNLOADS+'" target="_blank" rel="noopener noreferrer">Скачать WARP ↗</a><a class="btn-secondary" href="https://developers.cloudflare.com/warp-client/" target="_blank" rel="noopener noreferrer">Документация ↗</a><div class="small-note">LEDERG SQUAD не является разработчиком или владельцем Cloudflare WARP. Товарные знаки принадлежат их владельцам.</div></aside></section>';
+    }
+
+    function aboutView(){
+      app.innerHTML='<section class="detail-head"><div class="breadcrumbs"><a href="#/">SQUAD</a> / ABOUT</div><div class="section-kicker">LEDERG / SOFTWARE DIVISION</div><h1 style="font-size:clamp(35px,6vw,60px)">ONE HUB.<span style="color:var(--red)"> ALL TOOLS.</span></h1><p class="hero-copy">LEDERG SQUAD — каталог проектов, утилит и программ экосистемы LEDERG. Задача площадки — собрать доступ к проектам, документации и истории обновлений в одном месте.</p></section><section class="doc-panel"><h2>О каталоге</h2><p>Проекты могут иметь собственные веб-сайты, репозитории и отдельные релизные файлы. Перед установкой проверяй источник, платформу и совместимость.</p><h3>КОНТАКТЫ</h3><p>Telegram: <a href="https://t.me/LEDERG_ru" target="_blank" rel="noopener noreferrer" style="color:#ff747d">@LEDERG_ru</a></p><p>Discord: <a href="https://discord.gg/kDRMWqKmZp" target="_blank" rel="noopener noreferrer" style="color:#ff747d">LEDERG Community</a></p><div class="doc-links"><a href="#/">Вернуться в каталог</a><a href="https://github.com/lederg001/lederg-squad" target="_blank" rel="noopener noreferrer">GitHub нового репозитория ↗</a></div></section>';
+    }
+
+    function render(){
+      const route=(location.hash||'#/').replace(/^#\/?/,'').split('/').filter(Boolean);
+      if(!route.length||route[0]==='catalog'){homeView();}
+      else if(route[0]==='warp'){warpView();}
+      else if(route[0]==='about'){aboutView();}
+      else if(route[0]==='tools'&&route[1]){
+        const product=productById(route[1]);
+        if(!product){homeView();return;}
+        if(route[2]==='readme'||route[2]==='changes')docView(product,route[2]);
+        else toolView(product);
+      }else{homeView();}
+      navLinks.querySelectorAll('.nav-link').forEach(link=>{
+        link.classList.toggle('active',link.getAttribute('href')===(route[0]==='warp'?'#/warp':route[0]==='about'?'#/about':'#/'));
+      });
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    document.getElementById('mobileMenu').addEventListener('click',()=>navLinks.classList.toggle('open'));
+    navLinks.addEventListener('click',event=>{if(event.target.closest('a'))navLinks.classList.remove('open');});
+    window.addEventListener('hashchange',render);
+    document.getElementById('year').textContent=new Date().getFullYear();
+    render();
+    if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+      window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+    }
+  })();
+  </script>
+</body>
+</html>
