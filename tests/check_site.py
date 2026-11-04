@@ -78,7 +78,7 @@ class LedgergSquadSmokeTests(unittest.TestCase):
 
 
     def test_preview_click_opens_internal_tool_page(self):
-        self.assertIn('class="card-preview preview-open"', HTML)
+        self.assertIn('class="preview-image-link"', HTML)
         self.assertIn('href="#/tool/', HTML)
 
     def test_warp_preview_opens_internal_information_page(self):
@@ -105,9 +105,9 @@ class LedgergSquadSmokeTests(unittest.TestCase):
 
 
     def test_tg_proxy_windows_default_download_is_the_windows_exe(self):
-        self.assertIn("a.name==='TgWsProxy_windows.exe'", HTML)
+        self.assertIn("tgproxy:a=>n(a)==='tgwsproxy_windows.exe'", HTML)
         self.assertIn("key==='win64'", HTML)
-        self.assertIn("tgproxy: ['win64'", HTML)
+        self.assertIn("tgproxy:a=>n(a)==='tgwsproxy_windows.exe'", HTML)
         self.assertNotIn("n.includes('universal')?'universal':'", HTML)
 
     def test_preview_has_separate_direct_download_buttons(self):
