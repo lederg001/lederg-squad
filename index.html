@@ -104,21 +104,32 @@ const state={filter:'ВСЕ',query:'',status:'checking'};
 const $=(s,r=document)=>r.querySelector(s);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const bytes=n=>{if(!n)return'';const units=['B','KB','MB','GB'];let i=0,x=n;while(x>=1024&&i<3){x/=1024;i++;}return x.toFixed(i?1:0)+' '+units[i];};
-const primaryAsset=t=>t.assets.find(a=>a.name===t.primary)||t.assets[0];
+const primaryAsset=t=>{
+ const n=a=>String(a.name||'').toLowerCase();
+ const preferred={zapret:a=>n(a).endsWith('.zip'),byebye:a=>n(a).endsWith('.apk')&&n(a).includes('universal'),tgproxy:a=>n(a)==='tgwsproxy_windows.exe',tgproxyandroid:a=>n(a).endsWith('.apk')&&n(a).includes('universal')}[t.id];
+ return (preferred&&t.assets.find(preferred))||t.assets.find(a=>a.os==='Windows'&&/\\.exe$/i.test(a.name))||t.assets.find(a=>a.key==='arm64')||t.assets[0];
+};
+const quickAssets=t=>{
+ const n=a=>String(a.name||'').toLowerCase();
+ const rules={zapret:[a=>n(a).endsWith('.zip'),a=>n(a).endsWith('.rar'),a=>n(a).endsWith('.tar.gz')],byebye:[a=>n(a).includes('universal')&&n(a).endsWith('.apk'),a=>n(a).includes('arm64'),a=>n(a).includes('armeabi')],tgproxy:[a=>n(a)==='tgwsproxy_windows.exe',a=>n(a).includes('linux_amd64.deb'),a=>n(a).includes('macos_universal.dmg')],tgproxyandroid:[a=>n(a).includes('universal')&&n(a).endsWith('.apk'),a=>n(a).includes('arm64'),a=>n(a).includes('arm32')]}[t.id]||[];
+ const out=[];for(const rule of rules){const a=t.assets.find(rule);if(a&&!out.includes(a))out.push(a);}
+ for(const a of t.assets){if(out.length>=3)break;if(!out.includes(a))out.push(a);}return out.slice(0,3);
+};
+const quickLabel=a=>{const n=String(a.name||'').toLowerCase();if(n==='tgwsproxy_windows.exe')return 'WIN x64 EXE';if(n.includes('windows_7_64bit'))return 'WIN7 x64';if(n.includes('windows_7_32bit'))return 'WIN7 x86';if(n.includes('windows_arm64'))return 'WIN ARM64';if(n.includes('linux_amd64.deb'))return 'LINUX DEB';if(n.includes('linux_amd64.rpm'))return 'LINUX RPM';if(n.includes('linux_amd64'))return 'LINUX BIN';if(n.includes('macos_universal.dmg'))return 'MAC DMG';if(n.endsWith('.zip'))return 'ZIP';if(n.endsWith('.rar'))return 'RAR';if(n.endsWith('.tar.gz'))return 'TAR.GZ';if(n.includes('arm64'))return 'ARM64 APK';if(n.includes('arm32')||n.includes('armeabi'))return 'ARM32 APK';if(n.includes('universal'))return 'UNIVERSAL APK';return a.label||a.name;};
 const normaliseAsset=(id,a)=>{
  const n=String(a.name||'').toLowerCase();
  let os=id==='zapret'?'Windows':(id==='byebye'||id==='tgproxyandroid')?'Android':n.includes('linux')?'Linux':(n.includes('macos')||n.includes('darwin'))?'macOS':'Windows';
  let arch=/windows_7_32bit/.test(n)?'Windows 7 · 32-bit':/windows_7_64bit/.test(n)?'Windows 7 · 64-bit':/arm64|aarch64/.test(n)?'ARM64':/arm32|armeabi/.test(n)?'ARM32':/x86_64|amd64/.test(n)?'x64':/universal/.test(n)?'Universal':/x86/.test(n)?'x86':'';
  let kind=n.endsWith('.tar.gz')?'TAR.GZ':(n.match(/\.[^.]+$/)?.[0]||'BINARY').replace('.','').toUpperCase();
- let key=id==='zapret'&&n.endsWith('.zip')?'zip':id==='tgproxy'&&n.includes('windows.exe')&&!n.includes('windows_7')?'win64':n.includes('universal')?'universal':'';
+ let key=id==='zapret'&&n.endsWith('.zip')?'zip':id==='tgproxy'&&n==='tgwsproxy_windows.exe'?'win64':(id==='byebye'||id==='tgproxyandroid')&&n.endsWith('.apk')&&n.includes('universal')?'universal':'';
  return {name:a.name,label:a.label||[os,arch,kind].filter(Boolean).join(' · '),os,url:a.url||a.browser_download_url,key:a.key||key,size:a.size||0};
 };
 function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2400);}
 function go(path){location.hash=path;nav.classList.remove('open');}
 function previewMarkup(t){return '<div class="preview" data-fallback="'+esc(t.fallback)+'"><img src="'+esc(t.preview)+'" alt="'+esc(t.name)+' — официальный preview из GitHub" loading="lazy" referrerpolicy="no-referrer"><span class="preview-label"><i></i> OFFICIAL GITHUB SOURCE</span><span class="preview-version" data-version="'+esc(t.id)+'">'+esc(t.version)+'</span></div>';}
 function cardMarkup(t){
- const p=primaryAsset(t);const btnLabel=t.id==='zapret'?'ZIP DOWNLOAD':t.id==='byebye'?'UNIVERSAL APK':t.id==='tgproxy'?'WINDOWS EXE':'UNIVERSAL APK';
- return '<article class="tool-card"><a class="card-preview preview-open" href="#/tool/'+esc(t.id)+'" aria-label="Открыть описание '+esc(t.name)+'">'+previewMarkup(t)+'</a><div class="card-body"><div class="card-meta">'+esc(t.category)+' / '+esc(t.author)+'</div><div class="card-title-row"><h3>'+esc(t.name)+'</h3><span class="platform-tag">'+esc(t.platform)+'</span></div><p>'+esc(t.summary)+'</p><div class="pills">'+t.tags.map(x=>'<span class="pill">'+esc(x)+'</span>').join('')+'</div></div><div class="card-footer"><div class="author"><b>OFFICIAL AUTHOR · '+esc(t.author)+'</b><span data-release-date="'+esc(t.id)+'">Release '+esc(t.published)+'</span></div><div class="card-buttons">'+(p?'<a class="download" href="'+esc(p.url)+'" target="_blank" rel="noopener noreferrer" download>'+btnLabel+' ↓</a>':'')+'<button data-detail="'+esc(t.id)+'">ФАЙЛЫ / INFO</button></div></div></article>';
+ const quick=quickAssets(t).map(a=>'<a class="quick-download" href="'+esc(a.url)+'" title="'+esc(a.name)+'" target="_blank" rel="noopener noreferrer" download>'+esc(quickLabel(a))+' ↓</a>').join('');
+ return '<article class="tool-card"><div class="card-preview"><a class="preview-image-link" href="#/tool/'+esc(t.id)+'" aria-label="Открыть описание '+esc(t.name)+'">'+previewMarkup(t)+'</a><div class="preview-quick-actions">'+quick+'</div></div><div class="card-body"><div class="card-meta">'+esc(t.category)+' / '+esc(t.author)+'</div><div class="card-title-row"><h3>'+esc(t.name)+'</h3><span class="platform-tag">'+esc(t.platform)+'</span></div><p>'+esc(t.summary)+'</p><div class="pills">'+t.tags.map(x=>'<span class="pill">'+esc(x)+'</span>').join('')+'</div></div><div class="card-footer"><div class="author"><b>OFFICIAL AUTHOR · '+esc(t.author)+'</b><span data-release-date="'+esc(t.id)+'">Release '+esc(t.published)+'</span></div><div class="card-buttons"><button data-detail="'+esc(t.id)+'">ВСЕ ФАЙЛЫ / INFO</button></div></div></article>';
 }
 function homeView(){
  const q=state.query.toLowerCase();
