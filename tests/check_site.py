@@ -98,7 +98,7 @@ class LedgergSquadSmokeTests(unittest.TestCase):
     def test_site_purpose_explains_verified_originals_and_stealer_risk(self):
         self.assertIn("во избежание стиллеров", HTML)
         self.assertIn("проверенных источников", HTML)
-        self.assertIn("независимый аудит", HTML)
+        self.assertIn("независимым аудитом", HTML)
 
     def test_external_links_open_safely(self):
         for anchor in re.findall(r'<a[^>]+target="_blank"[^>]*>', HTML):
