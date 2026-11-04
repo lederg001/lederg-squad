@@ -103,6 +103,28 @@ class LedgergSquadSmokeTests(unittest.TestCase):
         self.assertIn("проверенных источников", HTML)
         self.assertIn("независимым аудитом", HTML)
 
+
+    def test_tg_proxy_windows_default_download_is_the_windows_exe(self):
+        self.assertIn("a.name==='TgWsProxy_windows.exe'", HTML)
+        self.assertIn("key==='win64'", HTML)
+        self.assertIn("tgproxy: ['win64'", HTML)
+        self.assertNotIn("n.includes('universal')?'universal':'", HTML)
+
+    def test_preview_has_separate_direct_download_buttons(self):
+        self.assertIn("preview-quick-actions", HTML)
+        self.assertIn("quickAssets(t)", HTML)
+        self.assertIn('class="quick-download"', HTML)
+        self.assertIn('class="preview-image-link"', HTML)
+
+    def test_official_readmes_are_refreshed_and_embedded(self):
+        self.assertTrue((ROOT / "docs.json").exists())
+        self.assertIn("DOC_SOURCES", MONITOR)
+        self.assertIn("fetch_readme", MONITOR)
+        self.assertIn("docs.json", WORKFLOW)
+        self.assertIn("renderMarkdown", HTML)
+        self.assertIn("documentationMarkup(t)", HTML)
+        self.assertIn("docs.projects", HTML)
+
     def test_external_links_open_safely(self):
         for anchor in re.findall(r'<a[^>]+target="_blank"[^>]*>', HTML):
             self.assertIn('rel="noopener noreferrer"', anchor)
