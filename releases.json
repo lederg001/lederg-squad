@@ -1,0 +1,186 @@
+{
+  "generated_at": "2026-11-04T13:21:52.199Z",
+  "projects": {
+    "zapret": {
+      "repo": "Flowseal/zapret-discord-youtube",
+      "version": "1.10.4",
+      "published": "2026-10-20",
+      "release_id": 418006256,
+      "assets": [
+        {
+          "name": "zapret-discord-youtube-1.10.4.zip",
+          "label": "Windows · ZIP",
+          "os": "Windows",
+          "key": "zip",
+          "url": "https://github.com/Flowseal/zapret-discord-youtube/releases/download/1.10.4/zapret-discord-youtube-1.10.4.zip",
+          "size": 1518649
+        },
+        {
+          "name": "zapret-discord-youtube-1.10.4.rar",
+          "label": "Windows · RAR",
+          "os": "Windows",
+          "key": "rar",
+          "url": "https://github.com/Flowseal/zapret-discord-youtube/releases/download/1.10.4/zapret-discord-youtube-1.10.4.rar",
+          "size": 1291935
+        }
+      ]
+    },
+    "byebye": {
+      "repo": "romanvht/ByeByeDPI",
+      "version": "v.1.8.2",
+      "published": "2026-10-02",
+      "release_id": 401568130,
+      "assets": [
+        {
+          "name": "ByeByeDPI-v1.8.2-arm64-v8a-release.apk",
+          "label": "Android · ARM64",
+          "os": "Android",
+          "key": "arm64",
+          "url": "https://github.com/romanvht/ByeByeDPI/releases/download/v.1.8.2/ByeByeDPI-v1.8.2-arm64-v8a-release.apk",
+          "size": 2771087
+        },
+        {
+          "name": "ByeByeDPI-v1.8.2-armeabi-v7a-release.apk",
+          "label": "Android · ARM32",
+          "os": "Android",
+          "key": "arm32",
+          "url": "https://github.com/romanvht/ByeByeDPI/releases/download/v.1.8.2/ByeByeDPI-v1.8.2-armeabi-v7a-release.apk",
+          "size": 2748792
+        },
+        {
+          "name": "ByeByeDPI-v1.8.2-universal-release.apk",
+          "label": "Android · Universal",
+          "os": "Android",
+          "key": "universal",
+          "url": "https://github.com/romanvht/ByeByeDPI/releases/download/v.1.8.2/ByeByeDPI-v1.8.2-universal-release.apk",
+          "size": 3332888
+        },
+        {
+          "name": "ByeByeDPI-v1.8.2-x86-release.apk",
+          "label": "Android · x86",
+          "os": "Android",
+          "key": "x86",
+          "url": "https://github.com/romanvht/ByeByeDPI/releases/download/v.1.8.2/ByeByeDPI-v1.8.2-x86-release.apk",
+          "size": 2774873
+        },
+        {
+          "name": "ByeByeDPI-v1.8.2-x86_64-release.apk",
+          "label": "Android · x86_64",
+          "os": "Android",
+          "key": "x64",
+          "url": "https://github.com/romanvht/ByeByeDPI/releases/download/v.1.8.2/ByeByeDPI-v1.8.2-x86_64-release.apk",
+          "size": 2778155
+        }
+      ]
+    },
+    "tgproxy": {
+      "repo": "Flowseal/tg-ws-proxy",
+      "version": "v1.11.4",
+      "published": "2026-11-01",
+      "release_id": 430537091,
+      "assets": [
+        {
+          "name": "TgWsProxy_windows.exe",
+          "label": "Windows · x64",
+          "os": "Windows",
+          "key": "win64",
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_windows.exe",
+          "size": 21805650
+        },
+        {
+          "name": "TgWsProxy_windows_7_32bit.exe",
+          "label": "Windows 7 · 32-bit",
+          "os": "Windows",
+          "key": "win7x86",
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_windows_7_32bit.exe",
+          "size": 15116425
+        },
+        {
+          "name": "TgWsProxy_windows_7_64bit.exe",
+          "label": "Windows 7 · 64-bit",
+          "os": "Windows",
+          "key": "win7x64",
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_windows_7_64bit.exe",
+          "size": 17834034
+        },
+        {
+          "name": "TgWsProxy_windows_arm64.exe",
+          "label": "Windows · ARM64",
+          "os": "Windows",
+          "key": "winarm64",
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_windows_arm64.exe",
+          "size": 21542604
+        },
+        {
+          "name": "TgWsProxy_linux_amd64.deb",
+          "label": "Linux · DEB",
+          "os": "Linux",
+          "key": "deb",
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_linux_amd64.deb",
+          "size": 56557204
+        },
+        {
+          "name": "TgWsProxy_linux_amd64.rpm",
+          "label": "Linux · RPM",
+          "os": "Linux",
+          "key": "rpm",
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_linux_amd64.rpm",
+          "size": 56820150
+        },
+        {
+          "name": "TgWsProxy_linux_amd64",
+          "label": "Linux · Binary",
+          "os": "Linux",
+          "key": "linuxbin",
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_linux_amd64",
+          "size": 57377032
+        },
+        {
+          "name": "TgWsProxy_macos_universal.dmg",
+          "label": "macOS · Universal",
+          "os": "macOS",
+          "key": "macos",
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_macos_universal.dmg",
+          "size": 36066852
+        }
+      ]
+    },
+    "tgproxyandroid": {
+      "repo": "kamenwwcpp/tg-ws-proxy-android",
+      "version": "v1.3.6",
+      "published": "2026-11-04",
+      "release_id": 433739447,
+      "assets": [
+        {
+          "name": "TgWsProxy-1.3.6-arm64.apk",
+          "label": "Android · ARM64",
+          "os": "Android",
+          "key": "arm64",
+          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.6/TgWsProxy-1.3.6-arm64.apk",
+          "size": 5568570
+        },
+        {
+          "name": "TgWsProxy-1.3.6-universal.apk",
+          "label": "Android · Universal",
+          "os": "Android",
+          "key": "universal",
+          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.6/TgWsProxy-1.3.6-universal.apk",
+          "size": 5356120
+        },
+        {
+          "name": "TgWsProxy-1.3.6-arm32.apk",
+          "label": "Android · ARM32",
+          "os": "Android",
+          "key": "arm32",
+          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.6/TgWsProxy-1.3.6-arm32.apk",
+          "size": 3887153
+        }
+      ]
+    }
+  },
+  "warp": {
+    "version": "latest",
+    "download": "https://1111-releases.cloudflareclient.com/win/latest",
+    "label": "Cloudflare WARP · Windows · MSI"
+  }
+}
