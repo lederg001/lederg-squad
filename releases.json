@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T09:13:17.026267+00:00",
+  "generated_at": "2026-11-13T11:12:38.517284+00:00",
   "projects": {
     "zapret": {
       "repo": "Flowseal/zapret-discord-youtube",
@@ -155,33 +155,33 @@
     },
     "tgproxyandroid": {
       "repo": "kamenwwcpp/tg-ws-proxy-android",
-      "version": "v1.3.7",
-      "published": "2026-11-09",
-      "release_id": 439348420,
+      "version": "v1.3.10",
+      "published": "2026-11-13",
+      "release_id": 444101380,
       "assets": [
         {
-          "name": "TgWsProxy-1.3.7-universal.apk",
+          "name": "TgWsProxy-1.3.10-universal.apk",
           "label": "Android · Universal · APK",
           "os": "Android",
           "key": "universal",
-          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.7/TgWsProxy-1.3.7-universal.apk",
-          "size": 5341296
+          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.10/TgWsProxy-1.3.10-universal.apk",
+          "size": 6468003
         },
         {
-          "name": "TgWsProxy-1.3.7-arm64.apk",
+          "name": "TgWsProxy-1.3.10-arm64.apk",
           "label": "Android · ARM64 · APK",
           "os": "Android",
           "key": "",
-          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.7/TgWsProxy-1.3.7-arm64.apk",
-          "size": 5548870
+          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.10/TgWsProxy-1.3.10-arm64.apk",
+          "size": 4198717
         },
         {
-          "name": "TgWsProxy-1.3.7-arm32.apk",
+          "name": "TgWsProxy-1.3.10-arm32.apk",
           "label": "Android · 32-bit / x86 · APK",
           "os": "Android",
           "key": "",
-          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.7/TgWsProxy-1.3.7-arm32.apk",
-          "size": 3880403
+          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.10/TgWsProxy-1.3.10-arm32.apk",
+          "size": 4401330
         }
       ]
     }
