@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T10:56:55.019386+00:00",
+  "generated_at": "2026-11-15T13:09:38.137801+00:00",
   "projects": {
     "zapret": {
       "repo": "Flowseal/zapret-discord-youtube",
@@ -155,33 +155,33 @@
     },
     "tgproxyandroid": {
       "repo": "kamenwwcpp/tg-ws-proxy-android",
-      "version": "v1.3.11",
-      "published": "2026-11-13",
-      "release_id": 444153319,
+      "version": "v1.3.12",
+      "published": "2026-11-15",
+      "release_id": 445995119,
       "assets": [
         {
-          "name": "TgWsProxy-1.3.11-universal.apk",
+          "name": "TgWsProxy-1.3.12-universal.apk",
           "label": "Android · Universal · APK",
           "os": "Android",
           "key": "universal",
-          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.11/TgWsProxy-1.3.11-universal.apk",
-          "size": 6470123
+          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.12/TgWsProxy-1.3.12-universal.apk",
+          "size": 5341505
         },
         {
-          "name": "TgWsProxy-1.3.11-arm64.apk",
+          "name": "TgWsProxy-1.3.12-arm64.apk",
           "label": "Android · ARM64 · APK",
           "os": "Android",
           "key": "",
-          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.11/TgWsProxy-1.3.11-arm64.apk",
-          "size": 4199288
+          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.12/TgWsProxy-1.3.12-arm64.apk",
+          "size": 5548851
         },
         {
-          "name": "TgWsProxy-1.3.11-arm32.apk",
+          "name": "TgWsProxy-1.3.12-arm32.apk",
           "label": "Android · 32-bit / x86 · APK",
           "os": "Android",
           "key": "",
-          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.11/TgWsProxy-1.3.11-arm32.apk",
-          "size": 4402993
+          "url": "https://github.com/kamenwwcpp/tg-ws-proxy-android/releases/download/v1.3.12/TgWsProxy-1.3.12-arm32.apk",
+          "size": 3880607
         }
       ]
     }
