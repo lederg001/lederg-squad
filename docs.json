@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-15T07:21:35.478634+00:00",
+  "generated_at": "2026-11-15T09:00:20.217350+00:00",
   "projects": {
     "zapret": {
       "repo": "Flowseal/zapret-discord-youtube",
-      "updated_at": "2026-11-15T07:21:35.705329+00:00",
+      "updated_at": "2026-11-15T09:00:20.656535+00:00",
       "sections": [
         {
           "title": "README · установка, стратегии и диагностика",
@@ -14,7 +14,7 @@
     },
     "byebye": {
       "repo": "romanvht/ByeByeDPI",
-      "updated_at": "2026-11-15T07:21:35.910680+00:00",
+      "updated_at": "2026-11-15T09:00:21.336928+00:00",
       "sections": [
         {
           "title": "README · ByeByeDPI Android",
@@ -25,7 +25,7 @@
     },
     "tgproxy": {
       "repo": "Flowseal/tg-ws-proxy",
-      "updated_at": "2026-11-15T07:21:36.394790+00:00",
+      "updated_at": "2026-11-15T09:00:22.176210+00:00",
       "sections": [
         {
           "title": "README · обзор и быстрый старт",
@@ -51,7 +51,7 @@
     },
     "tgproxyandroid": {
       "repo": "kamenwwcpp/tg-ws-proxy-android",
-      "updated_at": "2026-11-15T07:21:36.632234+00:00",
+      "updated_at": "2026-11-15T09:00:22.859748+00:00",
       "sections": [
         {
           "title": "README · Telegram WS Proxy Android",
