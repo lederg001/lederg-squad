@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T07:51:47.453453+00:00",
+  "generated_at": "2026-11-23T09:39:02.568148+00:00",
   "projects": {
     "zapret": {
       "repo": "Flowseal/zapret-discord-youtube",
@@ -83,73 +83,73 @@
     },
     "tgproxy": {
       "repo": "Flowseal/tg-ws-proxy",
-      "version": "v1.11.4",
-      "published": "2026-11-01",
-      "release_id": 430537091,
+      "version": "v1.12.0",
+      "published": "2026-11-23",
+      "release_id": 455210457,
       "assets": [
         {
           "name": "TgWsProxy_windows.exe",
           "label": "Windows · EXE",
           "os": "Windows",
           "key": "win64",
-          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_windows.exe",
-          "size": 21805650
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.12.0/TgWsProxy_windows.exe",
+          "size": 21843941
         },
         {
           "name": "TgWsProxy_windows_7_64bit.exe",
           "label": "Windows · Windows 7 · 64-bit · EXE",
           "os": "Windows",
           "key": "",
-          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_windows_7_64bit.exe",
-          "size": 17834034
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.12.0/TgWsProxy_windows_7_64bit.exe",
+          "size": 17833293
         },
         {
           "name": "TgWsProxy_windows_7_32bit.exe",
           "label": "Windows · Windows 7 · 32-bit · EXE",
           "os": "Windows",
           "key": "",
-          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_windows_7_32bit.exe",
-          "size": 15116425
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.12.0/TgWsProxy_windows_7_32bit.exe",
+          "size": 15115668
         },
         {
           "name": "TgWsProxy_windows_arm64.exe",
           "label": "Windows · ARM64 · EXE",
           "os": "Windows",
           "key": "",
-          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_windows_arm64.exe",
-          "size": 21542604
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.12.0/TgWsProxy_windows_arm64.exe",
+          "size": 21566568
         },
         {
           "name": "TgWsProxy_macos_universal.dmg",
           "label": "macOS · Universal · DMG",
           "os": "macOS",
           "key": "",
-          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_macos_universal.dmg",
-          "size": 36066852
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.12.0/TgWsProxy_macos_universal.dmg",
+          "size": 36082089
         },
         {
           "name": "TgWsProxy_linux_amd64.deb",
           "label": "Linux · x64 · DEB",
           "os": "Linux",
           "key": "",
-          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_linux_amd64.deb",
-          "size": 56557204
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.12.0/TgWsProxy_linux_amd64.deb",
+          "size": 56568022
         },
         {
           "name": "TgWsProxy_linux_amd64.rpm",
           "label": "Linux · x64 · RPM",
           "os": "Linux",
           "key": "",
-          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_linux_amd64.rpm",
-          "size": 56820150
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.12.0/TgWsProxy_linux_amd64.rpm",
+          "size": 56830232
         },
         {
           "name": "TgWsProxy_linux_amd64",
           "label": "Linux · x64 · BINARY",
           "os": "Linux",
           "key": "",
-          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.11.4/TgWsProxy_linux_amd64",
-          "size": 57377032
+          "url": "https://github.com/Flowseal/tg-ws-proxy/releases/download/v1.12.0/TgWsProxy_linux_amd64",
+          "size": 57387040
         }
       ]
     },
